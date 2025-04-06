@@ -1,10 +1,19 @@
 return {
 	"folke/which-key.nvim",
-	cmd = { "WhichKey" },
 	event = "VeryLazy",
 	opts = {
+		notify = true,
 		preset = "helix",
-		delay = 200,
+		delay = function(ctx)
+			return ctx.plugin and 0 or 200
+		end,
+		-- ignore_missing = true,
+		show_help = true,
+		show_keys = true,
+		disable = {
+			buftypes = {},
+			filetypes = { "TelescopePrompt" },
+		},
 		plugins = {
 			marks = true,
 			registers = true,
@@ -13,13 +22,13 @@ return {
 				suggestions = 20,
 			},
 			presets = {
-				operators = false,
+				operators = true,
 				motions = true,
-				text_objects = false,
-				windows = false,
-				nav = false,
-				z = false,
-				g = false,
+				text_objects = true,
+				windows = true,
+				nav = true,
+				z = true,
+				g = true,
 			},
 		},
 		win = {
@@ -29,6 +38,9 @@ return {
 			title = false,
 			title_pos = "center",
 			zindex = 1000,
+			wo = {
+				winblend = 30,
+			},
 		},
 		layout = {
 			width = { min = 30, max = 90 }, -- min and max width of the columns
@@ -72,13 +84,6 @@ return {
 				F11 = "󱊵",
 				F12 = "󱊶",
 			},
-		},
-		-- ignore_missing = true,
-		show_help = true,
-		show_keys = true,
-		disable = {
-			buftypes = {},
-			filetypes = { "TelescopePrompt" },
 		},
 	},
 }

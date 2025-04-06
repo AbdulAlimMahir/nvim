@@ -3,7 +3,7 @@ return {
 	lazy = true,
 	-- event = { "BufReadPost", "BufNewFile" },
 	vscode = true,
-	keys = { "s", "S", "r", "R", "f", "F", "t", "T", "<c-s>" }, -- Load on specific keys for navigation
+	-- keys = { "s", "S", "r", "R", "f", "F", "t", "T", "<c-s>" }, -- Load on specific keys for navigation
 	-- cmd = { "Flash", "FlashJump", "FlashTreesitter" }, -- Load on specific commands
 	opts = {
 		labels = "asdfghjklqwertyuiopzxcvbnm",

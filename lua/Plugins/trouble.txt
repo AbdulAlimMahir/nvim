@@ -2,7 +2,7 @@ return {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },
   dependencies = {
-    "echasnovski/mini.icons",
+	  "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim"
   },
   opts = {

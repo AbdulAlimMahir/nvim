@@ -5,6 +5,6 @@ return {
 		event = "FileType lua",
 		config = true,
 	},
-
+	-- { "stevearc/dressing.nvim", event = "VeryLazy" },
 	{ "nvim-tree/nvim-web-devicons", lazy = false },
 }

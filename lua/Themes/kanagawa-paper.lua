@@ -1,12 +1,12 @@
 return {
 	"thesimonho/kanagawa-paper.nvim",
 	name = "kanagawa-paper",
-	lazy = true,
-	-- priority = 1000,
+	lazy = false,
+	priority = 1000,
 	config = function()
 		require("kanagawa-paper").setup({
 			undercurl = true,
-			transparent = true,
+			transparent = false,
 			gutter = false,
 			diag_background = true,
 			dim_inactive = true, --Disabled when transparent
@@ -20,23 +20,11 @@ return {
 				statement = { italic = false, bold = false },
 				type = { italic = true, bold = false },
 			},
-			-- override default palette and theme colors
-			colors = {
-				palette = {},
-				theme = {
-					ink = {},
-					canvas = {},
-				},
-			},
 			-- adjust overall color balance for each theme [-1, 1]
 			color_offset = {
 				ink = { brightness = 0, saturation = 0 },
 				canvas = { brightness = 0, saturation = 0 },
 			},
-			-- override highlight groups
-			-- overrides = function(colors)
-			-- 	return {}
-			-- end,
 
 			-- uses lazy.nvim, if installed, to automatically enable needed plugins
 			auto_plugins = true,
@@ -55,7 +43,7 @@ return {
 				snacks = true,
 				telescope = true,
 				trouble = true,
-				which_key = true,
+				which_key = false,
 			},
 
 			-- enable integrations with other applications

@@ -5,7 +5,7 @@ return {
 	after = { "nvim-treesitter" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
-		"echasnovski/mini.icons",
+		"nvim-tree/nvim-web-devicons",
 	},
 	opts = {
 		-- Whether Markdown should be rendered by default or not

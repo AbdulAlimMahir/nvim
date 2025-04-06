@@ -18,7 +18,5 @@ return {
 		},
 		exclude = {},
 	},
-	config = function()
-		vim.cmd("TwilightEnable")
-	end,
+	config = function() end,
 }

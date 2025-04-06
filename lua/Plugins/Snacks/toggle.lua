@@ -1,7 +1,7 @@
 -- HACK: Read Toggle Docs @ https://github.com/folke/snacks.nvim/blob/main/docs/toggle.md
 
 return {
-	enabled = true,
+	enabled = false,
 	map = vim.keymap.set, -- keymap.set function to use
 	which_key = true, -- integrate with which-key to show enabled/disabled icons and colors
 	notify = true, -- show a notification when toggling

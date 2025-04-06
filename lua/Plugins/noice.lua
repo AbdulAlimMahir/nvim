@@ -1,11 +1,19 @@
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
+	event = "VeryLazy", -- CmdlineEnter, LspAttach
 	dependencies = {
-		"MunifTanjim/nui.nvim",
+		{
+			"rcarriga/nvim-notify",
+			event = "VeryLazy",
+		},
+		{
+			"MunifTanjim/nui.nvim",
+			event = "VeryLazy",
+		},
 	},
 	opts = {
 		lsp = {
+			progress = { enabled = true },
 			override = {
 				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 				["vim.lsp.util.stylize_markdown"] = true,
@@ -32,7 +40,7 @@ return {
 			view_search = "mini", -- view for search count messages. Set to `false` to disable
 		},
 		notify = {
-			enabled = true,
+			enabled = false,
 			view = "mini",
 		},
 		routes = {
