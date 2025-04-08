@@ -212,9 +212,9 @@ M.setup = function()
 			GitChanged = { fg = changed_fg, bg = bg }, -- Yellow for changed
 
 			contexts = { fg = accent, bg = "None" },
-			separator = { fg = muted, bg = "None" },
-			separator_insert = { fg = accent, bg = "None" },
-			separator_visual = { fg = muted, bg = "None" },
+			separator = { fg = "None", bg = bg }, -- Empty spaces between left-right part
+			-- separator_insert = { fg = accent, bg = "None" },
+			-- separator_visual = { fg = muted, bg = "None" },
 
 			lazyUpdates = { fg = "#2E7DE9", bg = bg },
 			StatuslineE = { fg = get_color("DiagnosticError", "fg"), bg = bg, bold = true },

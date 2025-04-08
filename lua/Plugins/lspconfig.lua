@@ -6,12 +6,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 	},
 	event = { "BufReadPre" },
-	opts = {
-		servers = {
-			lua_ls = {},
-			powershell_es = {},
-		},
-	},
+	opts = {},
 
 	config = function()
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -26,7 +21,7 @@ return {
 			--|>Custom LSP Configs <|--
 			["lua_ls"] = function()
 				lspconfig.lua_ls.setup({
-					-- capabilities = capabilities,
+					capabilities = capabilities,
 					settings = {
 						Lua = {
 							diagnostics = { globals = { "vim" } },
@@ -38,32 +33,22 @@ return {
 				})
 			end,
 
-			["powershell_es"] = function()
-				lspconfig.powershell_es.setup({
-					-- capabilities = capabilities,
-					cmd = {
-						"pwsh",
-						"-NoLogo",
-						"-NoProfile",
-						"-Command",
-						"Import-Module PowerShellEditorServices; Start-EditorServices -HostName 'nvim' -HostProfileId 'nvim' -HostVersion '1.0.0' -LogLevel 'Information' -LogPath '$HOME/.cache/nvim/pses.log' -SessionDetailsPath '$HOME/.cache/nvim/pses.session.json'",
-					},
-					settings = {
-						powershell = {
-							codeFormatting = { preset = "OTBS" },
-						},
-					},
-					-- root_dir = lspconfig.util.root_pattern("PSScriptAnalyzerSettings.psd1", ".git"),
-					single_file_support = true,
-				})
-			end,
-		})
-
-		--|> Setup Blink
-		require("blink.cmp").setup({
-			sources = {
-				default = { "lsp", "buffer", "path", "snippets" },
-			},
+			-- ["powershell_es"] = function()
+			-- 	lspconfig.powershell_es.setup({
+			-- 		capabilities = capabilities,
+			-- 		filetypes = { "ps1", "psm1", "psd1" },
+			-- 		single_file_support = true,
+			-- 		bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
+			-- 		settings = {
+			-- 			powershell = {
+			-- 				codeFormatting = { preset = "OTBS" },
+			-- 			},
+			-- 		},
+			-- 		init_options = {
+			-- 			enableProfileLoading = false,
+			-- 		},
+			-- 	})
+			-- end,
 		})
 
 		--|> Diagnostics configuration
