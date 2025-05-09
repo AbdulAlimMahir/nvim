@@ -174,7 +174,7 @@ M.setup = function()
 	_G.Status_line = function()
 		return table.concat({
 			M.bufferCount(),
-			M.file_name(),
+			-- M.file_name(),
 			M.git_branch(),
 			M.contexts(),
 			M.separator(),
