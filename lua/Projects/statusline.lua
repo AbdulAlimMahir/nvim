@@ -9,7 +9,7 @@ M.bufferCount = function()
 			count = count + 1
 		end
 	end
-	return "%#bufferCount# " .. " " .. count .. ""
+	return "%#bufferCount# " .. " " .. count .. " "
 end
 --|> file name
 M.file_name = function()
@@ -49,18 +49,6 @@ M.file_name = function()
 end
 
 --|>git branch
--- M.git_branch = function()
--- 	local branch = vim.b.gitsigns_head
--- 	if branch == nil then
--- 		return ""
--- 	end
--- 	-- Add highlight group for the branch icon
--- 	local added = vim.b.gitsigns_status_dict.added or 0
--- 	local changed = vim.b.gitsigns_status_dict.changed or 0
--- 	local removed = vim.b.gitsigns_status_dict.removed or 0
--- 	return "%#branch#  " .. branch .. "  " .. added .. " 󰍷 " .. removed .. " 󱗝 " .. changed .. " "
--- end
-
 M.git_branch = function()
 	local branch = vim.b.gitsigns_head
 	if not branch then
@@ -68,7 +56,14 @@ M.git_branch = function()
 	end
 	local status = vim.b.gitsigns_status_dict or {}
 	local added, changed, removed = status.added or 0, status.changed or 0, status.removed or 0
-	return "%#branch# " .. branch .. "  " .. added .. " 󰍷 " .. removed .. " 󱗝 " .. changed .. " "
+	return table.concat({
+		"%#GitBranch#  ", -- Branch icon and name
+		branch,
+		" ",
+		added > 0 and "%#GitAdded# " .. added .. " " or "", -- Green for added
+		removed > 0 and "%#GitRemoved#󰍷 " .. removed .. " " or "", -- Red for removed
+		changed > 0 and "%#GitChanged#󱗝 " .. changed .. " " or "", -- Yellow for changed
+	})
 end
 
 --|> contexts [Python]
@@ -182,9 +177,7 @@ M.setup = function()
 			M.file_name(),
 			M.git_branch(),
 			M.contexts(),
-
 			M.separator(),
-
 			M.lazy_updates(),
 			M.diagnostics(),
 			M.bufferLSP(),
@@ -202,19 +195,26 @@ M.setup = function()
 	local function set_statusline_colors()
 		local bg = get_color("Normal", "bg")
 		local fg = get_color("Normal", "fg")
-		local accent = get_color("String", "fg")
-		local muted = get_color("Comment", "fg")
 		local visual = get_color("Visual", "bg")
+		local accent = get_color("String", "fg") or 142 -- Green for added
+		local muted = get_color("Comment", "fg") or 245 -- Muted gray for branch
+		local removed_fg = get_color("Error", "fg") or 167 -- Red for removed
+		local changed_fg = get_color("DiffChange", "fg") or get_color("Special", "fg") or 214 -- Yellow-ish for changed
+
 		local group_styles = {
 			-- names inside %# #
 			bufferCount = { fg = visual, bg = accent, bold = true },
 			file_name = { fg = fg, bg = visual },
-			branch = { fg = fg, bg = "None" },
-			contexts = { fg = accent, bg = "None" },
 
-			separator = { fg = muted, bg = "None" },
-			separator_insert = { fg = accent, bg = "None" },
-			separator_visual = { fg = muted, bg = "None" },
+			GitBranch = { fg = fg, bg = bg }, -- Muted color for branch
+			GitAdded = { fg = accent, bg = bg }, -- Green for added
+			GitRemoved = { fg = removed_fg, bg = bg }, -- Red for removed
+			GitChanged = { fg = changed_fg, bg = bg }, -- Yellow for changed
+
+			contexts = { fg = accent, bg = "None" },
+			separator = { fg = "None", bg = bg }, -- Empty spaces between left-right part
+			-- separator_insert = { fg = accent, bg = "None" },
+			-- separator_visual = { fg = muted, bg = "None" },
 
 			lazyUpdates = { fg = "#2E7DE9", bg = bg },
 			StatuslineE = { fg = get_color("DiagnosticError", "fg"), bg = bg, bold = true },

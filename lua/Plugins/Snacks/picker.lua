@@ -4,7 +4,7 @@ return {
 	layout = {
 		-- presets options : "default" , "ivy" , "ivy-split" , "telescope" , "vscode", "select" , "sidebar"
 		-- override picker layout in keymaps function as a param below
-		preset = "telescope", -- defaults to this layout unless overidden
+		preset = "default", -- defaults to this layout unless overidden
 		cycle = false,
 	},
 	layouts = {
@@ -69,6 +69,15 @@ return {
 					{ win = "list", border = "none" },
 					{ win = "preview", title = "{preview}", width = 0.5, border = "left" },
 				},
+			},
+		},
+	},
+	sources = {
+		explorer = {
+			-- presets options : "default" , "ivy" , "telescope" , "vscode", "select" , "sidebar"
+			layout = {
+				preset = "default",
+				preview = true,
 			},
 		},
 	},

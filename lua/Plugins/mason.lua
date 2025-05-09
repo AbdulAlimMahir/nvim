@@ -18,7 +18,8 @@ return {
 			max_concurrent_installers = 3,
 			ui = {
 				check_outdated_packages_on_open = true,
-				border = "rounded", --single, double, rounded, none, solid, shadow
+				---|>Border single, double, rounded, none, solid, shadow
+				border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
 				width = 0.7,
 				height = 0.7,
 				icons = {
@@ -43,50 +44,49 @@ return {
 		})
 
 		require("mason-lspconfig").setup({
-			-- (2) LSP
+			---|>(2)LSP
 			automatic_installation = true,
 			ensure_installed = {
-				"html", --HTML
-				"cssls", --CSS,SCSS,LESS
-				"phpactor", --PHP (Intelephense)
-				"tailwindcss", --Tailwind CSS
-				"lua_ls", --Lua (formerly "sumneko_lua")
-				"clangd", --C/C++
-				"pyright", --Python LS
-				"ts_ls", --TypeScript
-				"taplo", --TOML
-				"eslint", --JavaScript, TypeScript
 				"bashls", --Bash
-				"vimls", --VimScript
-				"yamlls", --YAML
-				"jedi_language_server", --Django (Python)
+				"clangd", --C/C++
+				"cssls", --CSS,SCSS,LESS
+				"eslint", --JavaScript, TypeScript
+				"html", --HTML
+				-- "jedi_language_server", --Django (Python)
+				"lua_ls", --Lua (formerly "sumneko_lua")
 				"marksman", --Markdown LSP
+				-- "phpactor", --PHP (Intelephense)
 				"powershell_es", --PowerShell Script
+				"pyright", --Python LS
+				"tailwindcss", --Tailwind CSS
+				"taplo", --TOML
+				"ts_ls", --TypeScript
+				-- "vimls", --VimScript
+				-- "ast_grep", --C, C++, Rust, Go, Java, Python, C#, JavaScript, JSX, TypeScript, HTML, CSS, Kotlin, Dart, Lua
 			},
 		})
 
 		require("mason-tool-installer").setup({
 			automatic_installation = true,
 			ensure_installed = {
-				-- (3) DAP
+				---|>(3)DAP
 				"codelldb", --C, C++, Rust, Zig
 				"cpptools", --C, C++, Rust
 				"js-debug-adapter", --JavaScript, TypeScript
-				-- (4) Linter
-				"htmlhint", --HTML
-				"stylelint", --CSS, Sass, SCSS, LESS
-				"jsonlint", --JSON
-				"selene", --Lua, Luau
-				"pylint", --Python
+				---|>(4)Linter
+				"cpplint", --C,C++
 				"eslint_d", --JavaScript, TypeScript
-				"markdownlint", --Markdown
 				"gitlint",
-				-- (5) Formatter
+				"htmlhint", --HTML
+				"jsonlint", --JSON
+				"markdownlint", --Markdown
+				"pylint", --Python
+				"selene", --Lua, Luau
+				"stylelint", --CSS, Sass, SCSS, LESS
+				---|>(5)Formatter
 				"black", --Python
-				"stylua", --Lua
-				"yamlfmt", --YAML
-				-- "prettier", --Angular, CSS, Flow, GraphQL, HTML, JSON, JSX, JavaScript, LESS, Markdown, SCSS, TypeScript, Vue, YAML
 				"prettierd", --prettier in CLI Deamon
+				"stylua", --Lua
 			},
 		})
 	end,

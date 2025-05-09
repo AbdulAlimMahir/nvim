@@ -6,27 +6,21 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 	},
 	event = { "BufReadPre" },
-	opts = {
-		servers = {
-			lua_ls = {},
-			powershell_es = {},
-		},
-	},
 
 	config = function()
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		local lspconfig = require("lspconfig")
-		require("mason-lspconfig").setup_handlers({
+		require("mason-lspconfig").setup({
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,
 
-			--|>Custom LSP Configs <|--
+			--|> Custom LSP Configs <|--
 			["lua_ls"] = function()
 				lspconfig.lua_ls.setup({
-					-- capabilities = capabilities,
+					capabilities = capabilities,
 					settings = {
 						Lua = {
 							diagnostics = { globals = { "vim" } },
@@ -40,20 +34,20 @@ return {
 
 			["powershell_es"] = function()
 				lspconfig.powershell_es.setup({
-					-- capabilities = capabilities,
-					cmd = {
-						"pwsh",
-						"-NoLogo",
-						"-NoProfile",
-						"-Command",
-						"Import-Module PowerShellEditorServices; Start-EditorServices -HostName 'nvim' -HostProfileId 'nvim' -HostVersion '1.0.0' -LogLevel 'Information' -LogPath '$HOME/.cache/nvim/pses.log' -SessionDetailsPath '$HOME/.cache/nvim/pses.session.json'",
-					},
+					capabilities = capabilities,
+					-- cmd = {
+					-- 	"pwsh",
+					-- 	"-NoLogo",
+					-- 	"-NoProfile",
+					-- 	"-Command",
+					-- 	"Import-Module PowerShellEditorServices; Start-EditorServices -HostName 'nvim' -HostProfileId 'nvim' -HostVersion '1.0.0' -LogLevel 'Information' -LogPath '$HOME/.cache/nvim/pses.log' -SessionDetailsPath '$HOME/.cache/nvim/pses.session.json'",
+					-- },
 					settings = {
 						powershell = {
 							codeFormatting = { preset = "OTBS" },
 						},
 					},
-					-- root_dir = lspconfig.util.root_pattern("PSScriptAnalyzerSettings.psd1", ".git"),
+					root_dir = lspconfig.util.root_pattern("PSScriptAnalyzerSettings.psd1", ".git"),
 					single_file_support = true,
 				})
 			end,

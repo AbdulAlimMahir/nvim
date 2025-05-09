@@ -3,10 +3,11 @@ local M = {
 	cmd = { "DapContinue", "DapStepOver", "DapStepInto", "DapStepOut", "DapToggleBreakpoint" },
 	-- event = "VeryLazy",
 	dependencies = {
-		{ "nvim-neotest/nvim-nio" },
-		-- { "rcarriga/nvim-dap-ui" },
-		{ "igorlfs/nvim-dap-view", opts = {} },
-		{ "theHamsta/nvim-dap-virtual-text" },
+		{ "nvim-neotest/nvim-nio", lazy = true, after = "mfussenegger/nvim-dap" },
+		{ "rcarriga/nvim-dap-ui", lazy = true, after = "mfussenegger/nvim-dap" },
+		{ "igorlfs/nvim-dap-view", lazy = true, after = "mfussenegger/nvim-dap" },
+		{ "theHamsta/nvim-dap-virtual-text", lazy = true, after = "mfussenegger/nvim-dap" },
+		{ "jay-babu/mason-nvim-dap.nvim", lazy = true, after = "mfussenegger/nvim-dap" },
 	},
 }
 function M.config()

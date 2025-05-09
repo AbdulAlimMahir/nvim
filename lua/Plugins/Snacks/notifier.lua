@@ -2,7 +2,7 @@
 
 return {
 	enabled = true,
-	timeout = 3000, -- default timeout in ms
+	timeout = 2500, -- default timeout in ms
 	presets = {
 		mini = true,
 	},

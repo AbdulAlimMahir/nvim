@@ -2,7 +2,7 @@ return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
 	dependencies = {
-		"MunifTanjim/nui.nvim",
+		{ "MunifTanjim/nui.nvim", after = "folke/noice.nvim" },
 	},
 	opts = {
 		lsp = {
@@ -84,7 +84,7 @@ return {
 				},
 				border = {
 					style = "none",
-					-- padding = { 1, 1 },
+					padding = { 1, 1 },
 				},
 				win_options = {
 					winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",

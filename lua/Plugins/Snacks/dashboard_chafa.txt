@@ -1,0 +1,36 @@
+return {
+	width = 38,
+	autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
+	preset = {
+		-- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
+		-- pick = nil ,
+		keys = {
+			{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+			{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+			{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+			{
+				icon = " ",
+				key = "c",
+				desc = "Config",
+				action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+			},
+			{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+			{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+		},
+	},
+	sections = {
+		{
+			section = "terminal",
+			hl = "hearder",
+			indent = 3,
+			height = 16,
+			padding = 1,
+			cmd = "chafa ~/Downloads/Dashboard/dash-01.jpg --format symbols --symbols all --size 32x32 --scale max",
+			-- cmd = "pokemon-colorscripts --random",
+		},
+		{
+			{ section = "keys", gap = 1, padding = 1 },
+			{ section = "startup" },
+		},
+	},
+}

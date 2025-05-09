@@ -1,6 +1,15 @@
 -- HACK: Read Styles Docs @ https://github.com/folke/snacks.nvim/blob/main/docs/styles.md
 
 return {
+	snacks_image = {
+		relative = "cursor",
+		border = "rounded",
+		focusable = false,
+		backdrop = false,
+		row = 1,
+		col = 1,
+		-- width/height are automatically set by the image size unless specified below
+	},
 	notification = {
 		border = "rounded",
 		zindex = 100,

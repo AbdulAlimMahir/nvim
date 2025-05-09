@@ -1,7 +1,7 @@
 return {
 	"echasnovski/mini.nvim",
-	event = { "VeryLazy" },
 	lazy = true,
+	event = "VeryLazy",
 	version = false, -- [*]Stable, [false]Main
 	config = function()
 		require("Plugins.Mini.ai")
@@ -11,9 +11,14 @@ return {
 		require("Plugins.Mini.diff")
 		require("Configs.keymaps").MiniFiles()
 		require("Plugins.Mini.files")
-		require("Plugins.Mini.icons")
+		-- require("Plugins.Mini.icons")
+		require("Plugins.Mini.jump")
+		require("Plugins.Mini.jump2d")
 		require("Plugins.Mini.move")
+		require("Plugins.Mini.operators")
 		require("Plugins.Mini.pairs")
+		require("Plugins.Mini.splitjoin")
 		require("Plugins.Mini.surround")
+		require("Plugins.Mini.tabline")
 	end,
 }

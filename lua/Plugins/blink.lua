@@ -1,6 +1,6 @@
 return {
 	"saghen/blink.cmp",
-	version = "1.*", -- v0.*
+	version = "1.*",
 	event = { "InsertEnter" },
 	dependencies = {
 		"rafamadriz/friendly-snippets",
@@ -22,7 +22,7 @@ return {
 	},
 	opts = {
 		keymap = {
-			["<Enter>"] = { "accept", "fallback" },
+			["<C-y>"] = { "accept", "fallback" },
 			["<C-p>"] = { "select_prev", "fallback" },
 			["<C-n>"] = { "select_next", "fallback" },
 

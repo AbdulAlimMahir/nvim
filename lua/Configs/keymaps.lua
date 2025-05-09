@@ -1,4 +1,3 @@
-
 local M = {}
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -53,8 +52,12 @@ end
 --<> Diagnostics
 map("n", "<leader>d", "", "D")
 map("n", "<leader>dl", vim.diagnostic.open_float, "Show line diagnostics")
-map("n", "dh", vim.diagnostic.goto_prev, "Go to previous diagnostic")
-map("n", "dl", vim.diagnostic.goto_next, "Go to next diagnostic")
+map("n", "dh", function()
+	vim.diagnostic.get_prev_pos()
+end, "Go to previous diagnostic")
+map("n", "dl", function()
+	vim.diagnostic.get_next_pos()
+end, "Go to next diagnostic")
 map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
 map("n", "gK", vim.lsp.buf.hover, "Show documentation for what is under cursor")
 
@@ -188,6 +191,12 @@ end
 --|>[ O ]<|--
 --<>Options
 map("n", "<leader>o", "", "O")
+map(
+	"n",
+	"<leader>oC",
+	":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})<CR>",
+	"Nvim Configs Directory"
+)
 map("n", "<leader>oh", ":nohl<CR>", "󰉥 Clear Highlights")
 map("n", "<leader>ow", ":%s/<C-r><C-w>/", "Replace cursor Word")
 map("v", "<leader>ow", '"hy:%s/<C-r>h//g<left><left>', "Replace cursor Word")
@@ -204,15 +213,15 @@ M.Oil = function()
 	map("n", "<leader>-", ":Oil<CR>", "Open Oil")
 end
 
---<> Theme Picker
-M.themePicker = function()
-	map("n", "<leader>oc", ":lua require('Projects.theme_picker').pick_theme()<CR>", "Colorschemes")
-	map("n", "<leader>oC", ":lua require('Projects.theme_picker').current_theme()<CR>", "Current Colorschemes")
-end
+-- --<> Theme Picker
+-- M.themePicker = function()
+-- 	map("n", "<leader>oc", ":lua require('Projects.theme_picker').pick_theme()<CR>", "Colorschemes")
+-- 	map("n", "<leader>oC", ":lua require('Projects.theme_picker').current_theme()<CR>", "Current Colorschemes")
+-- end
 
 --<> Togglr
 M.Togglr = function()
-	map({ "n", "v" }, "<leader>ot", ":lua require('togglr').toggle_word()<CR>", " Toggle a Word")
+	map({ "n", "v" }, "<leader>ot", ":lua require('togglr').toggle_word()<CR>", " Toggle Cursor Word")
 end
 
 -------------------------------------------------------------------------------

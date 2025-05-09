@@ -1,19 +1,19 @@
 return {
 	"mfussenegger/nvim-lint",
 	event = { "BufWritePost" },
-	ft = {
-		"javascript",
-		"typescript",
-		"javascriptreact",
-		"typescriptreact",
-		"lua",
-		"python",
-		"go",
-		"c",
-		"cpp",
-		"html",
-		"css",
-	},
+	-- ft = {
+	-- 	"javascript",
+	-- 	"typescript",
+	-- 	"javascriptreact",
+	-- 	"typescriptreact",
+	-- 	"lua",
+	-- 	"python",
+	-- 	"go",
+	-- 	"c",
+	-- 	"cpp",
+	-- 	"html",
+	-- 	"css",
+	-- },
 	config = function()
 		local lint = require("lint")
 

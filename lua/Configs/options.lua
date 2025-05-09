@@ -1,16 +1,16 @@
 local options = {
 	autoindent = true,
 	backup = false,
-	cmdheight = 0, -- only need the commandline when typing command
+	cmdheight = 1, -- only need the commandline when typing command
 	colorcolumn = "", --defined in "lukas-reineke/virt-column.nvim"
 	completeopt = { "menuone", "menuone", "noselect" }, -- mostly just for cmp
 	conceallevel = 0, -- so that `` is visible in markdown files
 	confirm = true, -- confirm to save changes before exiting modified buffer
 	cursorline = true,
-	cursorlineopt = "number", -- line, number, both(default), screenline
+	cursorlineopt = "both", -- line, number, both(default), screenline
 	expandtab = true, -- convert tabs into spaces
 	fileencoding = "utf-8", -- the encoding written to a file
-	-- guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,sm:block-blinkwait175-blinkoff150-blinkon175",
+	guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,sm:block-blinkwait175-blinkoff150-blinkon175",
 	-- guicursor = "n-v-ve-i:block,c-ci:ver50,r-cr:hor100", --mode(s):arg  modes{ n-v-ve-i-r-cr-i-ci-o-sm-a } arg{ hor/ver{char height/width}  }
 	-- guifont = "JetBrainsMono Nerd Font", -- the font used in graphical neovim
 	hlsearch = true, -- highlight all matches on previous search pattern
@@ -30,12 +30,12 @@ local options = {
 	shiftwidth = 2, -- the number of spaces for each indentation
 	showcmd = false, -- false
 	showmode = false, -- mode will be shown by statusline
-	showtabline = 0, -- hide tabline
+	showtabline = 1, -- hide tabline
 	sidescrolloff = 8, -- minimul number of columns to the left and right of cursor
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	smartcase = true, -- but if our search contains uppercase(s), it becomes case-sensitive
 	smartindent = true, -- automatic indentations
-	-- spelllang = { "en" },
+	spelllang = { "en_us", "bangla" },
 	splitbelow = true, -- when splitting horizontally, new window goes below
 	splitright = true, -- when splitting vertically, new window goes to the right
 	swapfile = false, -- do not create a swap file
@@ -52,7 +52,7 @@ local options = {
 	wrap = false, -- do not wrap lines because it is ugly
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 
-	--|> terminal
+	---|>Terminal
 	shell = "pwsh",
 	shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command",
 	shellquote = "",

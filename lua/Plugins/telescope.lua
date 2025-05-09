@@ -6,16 +6,7 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 		{ "nvim-telescope/telescope-symbols.nvim" },
-		-- { "echasnovski/mini.icons" },
-		-- { "folke/todo-comments.nvim" },
-		-- { "ThePrimeagen/harpoon", branch = "harpoon2" },
-		-- { "folke/trouble.nvim" },
-		-- { "xiyaowong/telescope-emoji.nvim" },
-		-- { "debugloop/telescope-undo.nvim" },
-		-- { "jvgrootveld/telescope-zoxide" },
-		-- { "piersolenski/telescope-import.nvim" },
-		-- { "crispgm/telescope-heading.nvim" },
-		-- { "nvim-treesitter/nvim-treesitter" },
+		{ "nvim-telescope/telescope-frecency.nvim" },
 	},
 	require("Configs.keymaps").telescope(),
 	config = function()
@@ -98,5 +89,6 @@ return {
 			},
 		})
 		telescope.load_extension("fzf")
+		telescope.load_extension("frecency")
 	end,
 }

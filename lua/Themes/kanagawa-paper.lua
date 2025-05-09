@@ -1,15 +1,15 @@
 return {
 	"thesimonho/kanagawa-paper.nvim",
 	name = "kanagawa-paper",
-	lazy = true,
-	-- priority = 1000,
+	lazy = false,
+	priority = 1000,
 	config = function()
 		require("kanagawa-paper").setup({
 			undercurl = true,
 			transparent = true,
 			gutter = false,
 			diag_background = true,
-			dim_inactive = true, --Disabled when transparent
+			dim_inactive = false, --Disabled when transparent
 			terminal_colors = true,
 			cache = true,
 
@@ -69,6 +69,6 @@ return {
 				},
 			},
 		})
-		-- vim.cmd.colorscheme("kanagawa-paper-ink")
+		vim.cmd.colorscheme("kanagawa-paper-ink")
 	end,
 }

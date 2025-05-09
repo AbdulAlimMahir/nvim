@@ -1,5 +1,6 @@
 return {
 	-- "echasnovski/mini.ai",
+	lazy = true,
 	event = { "InsertEnter" },
 	require("mini.ai").setup({
 		custom_textobjects = nil,

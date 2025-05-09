@@ -1,7 +1,6 @@
-
 local autocmd = vim.api.nvim_create_autocmd
 -------------------------------
---|> NvChad autocmds <| --
+---|>NvChad_Autocmds
 autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 	group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
 	callback = function(args)
@@ -28,7 +27,7 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 })
 
 -------------------------------
---|> Yank Highlight
+---|>Yank_Highlight
 autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
@@ -38,7 +37,7 @@ autocmd("TextYankPost", {
 })
 
 -------------------------------
---|> Neovim's Terminal
+---|>Neovim_Terminal
 autocmd("TermOpen", {
 	pattern = "*",
 	group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
@@ -49,23 +48,3 @@ autocmd("TermOpen", {
 		-- vim.opt_local.cursorline = false -- Disable cursorline
 	end,
 })
-
--------------------------------
---|> Dynamically set background for Lazy and Mason
--- local function set_plugin_backgrounds()
--- 	-- Get the background color from the current colorscheme
--- 	local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg or "#1e1efe"
--- 	local normal_fg = vim.api.nvim_get_hl(0, { name = "Normal" }).fg or "#DCf7BA"
-
--- 	-- Apply the background color to Lazy and Mason highlight groups
--- 	vim.api.nvim_set_hl(0, "LazyNormal", { bg = normal_bg, fg = normal_fg }) -- Adjust 'fg' as needed
--- 	vim.api.nvim_set_hl(0, "MasonNormal", { bg = normal_bg, fg = normal_fg })
--- end
-
--- -- Run the function on colorscheme change
--- vim.api.nvim_create_autocmd("ColorScheme", {
--- 	pattern = "*",
--- 	callback = set_plugin_backgrounds,
--- })
--- -- Run the function on startup
--- set_plugin_backgrounds()

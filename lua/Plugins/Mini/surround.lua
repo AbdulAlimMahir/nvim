@@ -1,6 +1,6 @@
 return {
 	-- "echasnovski/mini.surround",
-	-- lazy = true,
+	lazy = true,
 	event = { "InsertEnter", "BufReadPost" },
 	require("mini.surround").setup({
 		custom_surroundings = nil,

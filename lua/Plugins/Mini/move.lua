@@ -1,5 +1,6 @@
 return {
 	-- "echasnovski/mini.move",
+	lazy = true,
 	event = { "BufReadPost", "BufNewFile" },
 	require("mini.move").setup({
 		mappings = {
