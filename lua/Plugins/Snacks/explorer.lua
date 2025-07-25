@@ -16,10 +16,7 @@ return {
 		auto_close = false,
 		jump = { close = false },
 		-- presets options : "default" , "ivy" , "ivy-split" , "telescope" , "vscode", "select" , "sidebar"
-		layout = { preset = "sidebar", preview = true },
-		-- to show the explorer to the right, add the below to
-		-- your config under `opts.picker.sources.explorer`
-		-- layout = { layout = { position = "right" } },
+		-- layout = { preset = "sidebar", preview = true },
 		formatters = {
 			file = { filename_only = true },
 			severity = { pos = "right" },

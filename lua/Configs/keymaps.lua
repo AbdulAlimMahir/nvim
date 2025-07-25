@@ -23,8 +23,7 @@ map("n", "<leader>b", "", "B")
 map("n", "<leader>bh", ":bprev<CR>", " Previous")
 map("n", "<leader>bl", ":bnext<CR>", " Next")
 map("n", "<leader>bp", ":bnext ", " Go to Buffer")
-map("n", "<leader>bq", ":bdelete<CR>", "󰅙 Current")
--- map("n", "<leader>bx", ":bdelete ", "󰦀 Close Buffer")
+-- map("n", "<leader>bq", ":bdelete<CR>", "󰅙 Current")
 -------------------------------------------------------------------------------
 --|>[ C ]<|--
 --<> Code Action
@@ -226,10 +225,9 @@ end
 
 -------------------------------------------------------------------------------
 --|>[ P ]<|--
-map("n", "<leader>bq", ":bdelete<CR>", "󰅙 Current")
-map("n", "<leader>ps", function()
-	require("snacks").profiler.scratch()
-end, "Profiler Scratch Buffer")
+-- map("n", "<leader>ps", function()
+-- 	require("snacks").profiler.scratch()
+-- end, "Profiler Scratch Buffer")
 
 -------------------------------------------------------------------------------
 --|>[ Q ]<|--
@@ -274,7 +272,7 @@ M.telescope = function()
 				preview_width = 0.5,
 			},
 		}))
-	end, "Buffers")
+	end, "Telescope Buffers")
 	map("n", "<leader>db", ":Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics")
 	-- map("n", "<leader>te", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "󰈞 Files")
 	map("n", "<leader>tf", function()

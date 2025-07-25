@@ -1,6 +1,6 @@
 return {
 	"mfussenegger/nvim-lint",
-	event = { "BufWritePost" },
+	event = { "BufWritePost", "BufReadPost", "InsertLeave" },
 	-- ft = {
 	-- 	"javascript",
 	-- 	"typescript",
@@ -20,11 +20,11 @@ return {
 		lint.linters_by_ft = {
 			html = { "htmlhint" }, --htmlhint
 			css = { "stylelint" },
-			javascript = { "eslint_d" }, --eslint_d
-			typescript = { "eslint_d" }, -- eslint_d
-			json = { "jsonlint" }, -- "jsonlint","biomels/biomejs",
-			javascriptreact = { "eslint_d" }, --eslint_d
-			typescriptreact = { "eslint_d" }, --eslint_d
+			javascript = { "biomejs" }, --eslint_d
+			typescript = { "biomejs" }, -- eslint_d
+			javascriptreact = { "biomejs" }, --eslint_d
+			typescriptreact = { "biomejs" }, --eslint_d
+			json = { "biomejs" }, -- "jsonlint","biomels/biomejs",
 			python = { "pylint" },
 		}
 

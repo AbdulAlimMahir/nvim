@@ -59,7 +59,7 @@ return {
 				backdrop = false,
 				width = 0,
 				height = 0.4,
-				position = "bottom",
+				position = "top",
 				border = "top",
 				title = " {title} {live} {flags}",
 				title_pos = "left",
@@ -76,8 +76,9 @@ return {
 		explorer = {
 			-- presets options : "default" , "ivy" , "telescope" , "vscode", "select" , "sidebar"
 			layout = {
-				preset = "default",
-				preview = true,
+				preset = "sidebar",
+				preview = false,
+				layout = { position = "right" },
 			},
 		},
 	},

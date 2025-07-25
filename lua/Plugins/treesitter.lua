@@ -1,8 +1,11 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	version = false,
+	lazy = vim.fn.argc(-1) == 0,
 	event = { "BufReadPost" },
-	cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 	build = ":TSUpdate",
+	opts_extend = { "ensure_installed" },
 	opts = {
 		ensure_installed = {
 			"regex",
@@ -57,7 +60,18 @@ return {
 		autopairs = { enable = true },
 		-- List of parsers to ignore installing (or "all")
 		textobjects = {
-			select = { enable = false },
+			move = {
+				enable = true,
+				goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
+				goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+				goto_previous_start = {
+					["[f"] = "@function.outer",
+					["[c"] = "@class.outer",
+					["[a"] = "@parameter.inner",
+				},
+				goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
+			},
+			select = { enable = true },
 		},
 		incremental_selection = {
 			enable = true,

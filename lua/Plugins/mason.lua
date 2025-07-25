@@ -1,13 +1,15 @@
 return {
 	"williamboman/mason.nvim",
 	cmd = { "Mason" },
-	event = "BufReadPre",
+	-- event = "BufReadPre",
 	dependencies = {
 		{ "williamboman/mason-lspconfig.nvim", event = "BufReadPre" },
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 	},
 	config = function()
 		require("mason").setup({
+			log_level = vim.log.levels.INFO,
+			max_concurrent_installers = 1,
 			registries = {
 				"github:mason-org/mason-registry",
 			},
@@ -15,7 +17,6 @@ return {
 				"mason.providers.registry-api",
 				"mason.providers.client",
 			},
-			max_concurrent_installers = 3,
 			ui = {
 				check_outdated_packages_on_open = true,
 				---|>Border single, double, rounded, none, solid, shadow
@@ -67,7 +68,10 @@ return {
 		})
 
 		require("mason-tool-installer").setup({
-			automatic_installation = true,
+			auto_update = true,
+			run_on_start = true,
+			start_delay = 3000, -- 3-second delay to avoid startup lag
+			debounce_hours = 24, -- Auto-update at most once every 24 hours
 			ensure_installed = {
 				---|>(3)DAP
 				"codelldb", --C, C++, Rust, Zig
@@ -87,6 +91,11 @@ return {
 				"black", --Python
 				"prettierd", --prettier in CLI Deamon
 				"stylua", --Lua
+			},
+			integrations = {
+				["mason-lspconfig"] = true,
+				["mason-null-ls"] = true,
+				["mason-nvim-dap"] = true,
 			},
 		})
 	end,

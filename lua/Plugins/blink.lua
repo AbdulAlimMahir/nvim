@@ -1,7 +1,13 @@
 return {
 	"saghen/blink.cmp",
-	version = "1.*",
+	version = "*",
+	build = "cargo build --release",
 	event = { "InsertEnter" },
+	opts_extend = {
+		"sources.completion.enabled_providers",
+		"sources.compat",
+		"sources.default",
+	},
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 		{
@@ -34,7 +40,19 @@ return {
 		appearance = {
 			nerd_font_variant = "mono",
 		},
-		completion = { documentation = { auto_show = false } },
+		completion = {
+			accept = {
+				auto_brackets = {
+					enabled = true, -- experimental auto-brackets support
+				},
+			},
+			documentation = { auto_show = true, auto_show_delay_ms = 200 },
+			menu = {
+				draw = {
+					treesitter = { "lsp" },
+				},
+			},
+		},
 		signature = { enabled = true },
 		sources = {
 			default = { "lazydev", "lsp", "buffer", "path", "snippets" },
@@ -47,5 +65,4 @@ return {
 			},
 		},
 	},
-	opts_extend = { "sources.default" },
 }

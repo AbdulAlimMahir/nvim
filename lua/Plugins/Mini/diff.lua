@@ -2,11 +2,10 @@ return {
 	-- "echasnovski/mini.diff",
 	lazy = true,
 	-- cmd = { "MiniDiffview", "MiniDiffclose", "MiniDiffput", "MiniDiffget" },
-	event = "User FilePost", --{ "BufReadPre", "BufNewFile" },
+	-- event = "User FilePost", --{ "BufReadPre", "BufNewFile" },
 	require("mini.diff").setup({
 		view = {
 			-- Default: 'number' if line numbers are enabled, 'sign' otherwise.
-			style = vim.go.number and "number" or "sign",
 			signs = { add = "▒", change = "▒", delete = "▒" },
 			priority = 199,
 		},

@@ -30,11 +30,11 @@ return {
 		lazygit = require("Plugins.Snacks.lazygit"),
 		notifier = require("Plugins.Snacks.notifier"),
 		picker = require("Plugins.Snacks.picker"),
-		profiler = require("Plugins.Snacks.profiler"),
+		-- profiler = require("Plugins.Snacks.profiler"),
 		quickfile = { enabled = true, exclude = { "latex" } },
 		scope = require("Plugins.Snacks.scope"),
 		scroll = require("Plugins.Snacks.scroll"),
-		-- statuscolumn = { enabled = true },
+		statuscolumn = { enabled = true },
 		styles = require("Plugins.Snacks.styles"),
 		terminal = require("Plugins.Snacks.terminal"),
 		toggle = require("Plugins.Snacks.toggle"),
@@ -142,24 +142,24 @@ return {
 			desc = "Prev Reference",
 			mode = { "n", "t" },
 		},
-		{
-			"<leader>N",
-			desc = "Neovim News",
-			function()
-				Snacks.win({
-					file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-					width = 0.6,
-					height = 0.6,
-					wo = {
-						spell = false,
-						wrap = false,
-						signcolumn = "yes",
-						statuscolumn = " ",
-						conceallevel = 3,
-					},
-				})
-			end,
-		},
+		-- {
+		-- 	"<leader>N",
+		-- 	desc = "Neovim News",
+		-- 	function()
+		-- 		Snacks.win({
+		-- 			file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+		-- 			width = 0.6,
+		-- 			height = 0.6,
+		-- 			wo = {
+		-- 				spell = false,
+		-- 				wrap = false,
+		-- 				signcolumn = "yes",
+		-- 				statuscolumn = " ",
+		-- 				conceallevel = 3,
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- },
 		------------------------------
 		{
 			"<leader><space>",
@@ -168,13 +168,13 @@ return {
 			end,
 			desc = "Smart Find Files",
 		},
-		{
-			"<leader>,",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "Buffers",
-		},
+		-- {
+		-- 	"<leader>,",
+		-- 	function()
+		-- 		Snacks.picker.buffers()
+		-- 	end,
+		-- 	desc = "Buffers",
+		-- },
 		{
 			"<leader>/",
 			function()

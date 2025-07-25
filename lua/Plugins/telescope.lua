@@ -28,8 +28,9 @@ return {
 				extensions_list = { "themes", "terms" }, -- copied from NvChad
 				path_display = { "smart" },
 				color_devicons = true,
-				prompt_prefix = "   ",
-				selection_caret = "▎ ",
+				prompt_prefix = "  ", --  
+				selection_caret = " ", -- ▎ 
+				entry_prefix = " ",
 				multi_icon = " │ ",
 				winblend = 0,
 				borderchars = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }, --single, double, rounded, none, solid, shadow

@@ -1,16 +1,39 @@
 return {
 	"neovim/nvim-lspconfig",
+	event = { "BufReadPre" },
 	dependencies = {
-		"saghen/blink.cmp", -- Ensure Blink is integrated
+		{ "saghen/blink.cmp", version = "*" }, -- Ensure Blink is integrated
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 	},
-	event = { "BufReadPre" },
 
 	config = function()
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		local lspconfig = require("lspconfig")
 		require("mason-lspconfig").setup({
+			opts = {
+				---|>(2)LSP
+				automatic_enable = true,
+				ensure_installed = {
+					-- "bashls", --Bash
+					"biome", -- JavaScript, TypeScript, JSON
+					"clangd", --C/C++
+					"cssls", --CSS,SCSS,LESS
+					-- "eslint", --JavaScript, TypeScript
+					"html", --HTML
+					-- "jedi_language_server", --Django (Python)
+					"lua_ls", --Lua (formerly "sumneko_lua")
+					"marksman", --Markdown LSP
+					-- "phpactor", --PHP (Intelephense)
+					"powershell_es", --PowerShell Script
+					"pyright", --Python LS
+					"tailwindcss", --Tailwind CSS
+					-- "taplo", --TOML
+					-- "ts_ls", --TypeScript
+					-- "vimls", --VimScript
+					-- "ast_grep", --C, C++, Rust, Go, Java, Python, C#, JavaScript, JSX, TypeScript, HTML, CSS, Kotlin, Dart, Lua
+				},
+			},
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
