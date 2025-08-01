@@ -13,7 +13,7 @@ M.bufferCount = function()
 end
 --|> file name
 M.file_name = function()
-	local devicons = require("nvim-web-devicons") -- Ensure this plugin is installed
+	local devicons = require("mini.icons") -- Ensure this plugin is installed
 	local filename = vim.fn.expand("%:t") -- Get the current filename
 	local file_ext = vim.fn.expand("%:e") -- Get the file extension
 	local file_icon, icon_color = devicons.get_icon_color(filename, file_ext, { default = true })

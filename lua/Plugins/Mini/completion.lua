@@ -1,5 +1,6 @@
 return {
 	-- "echasnovski/mini.completion",
+	enabled = false,
 	lazy = true,
 	event = { "InsertEnter" }, -- BufReadPost, BufNewFile, UIEnter
 	dependencies = { "rafamadriz/friendly-snippets" },

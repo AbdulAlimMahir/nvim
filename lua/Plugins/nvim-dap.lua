@@ -1,17 +1,17 @@
 local M = {
 	"mfussenegger/nvim-dap",
 	cmd = { "DapContinue", "DapStepOver", "DapStepInto", "DapStepOut", "DapToggleBreakpoint" },
-	-- event = "VeryLazy",
+	events = "User MasonLspFileType",
 	dependencies = {
-		{ "nvim-neotest/nvim-nio", lazy = true, after = "mfussenegger/nvim-dap" },
+		-- { "nvim-neotest/nvim-nio", lazy = true, after = "mfussenegger/nvim-dap" },
 		{ "rcarriga/nvim-dap-ui", lazy = true, after = "mfussenegger/nvim-dap" },
-		{ "igorlfs/nvim-dap-view", lazy = true, after = "mfussenegger/nvim-dap" },
+		-- { "igorlfs/nvim-dap-view", lazy = true, after = "mfussenegger/nvim-dap" },
 		{ "theHamsta/nvim-dap-virtual-text", lazy = true, after = "mfussenegger/nvim-dap" },
-		{ "jay-babu/mason-nvim-dap.nvim", lazy = true, after = "mfussenegger/nvim-dap" },
+		-- { "jay-babu/mason-nvim-dap.nvim", lazy = true, after = "mfussenegger/nvim-dap" },
 	},
 }
 function M.config()
-	local dap, dapui = require("dap")
+	local dap = require("dap")
 
 	vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "error", linehl = "", numhl = "" })
 	-- ADAPTERS
@@ -43,21 +43,6 @@ function M.config()
 			processId = require("dap.utils").pick_process,
 		},
 	}
-	dap.adapters.ruby = {
-		type = "executable",
-		command = "bundle",
-		args = { "exec", "readapt", "stdio" },
-	}
-
-	dap.configurations.ruby = {
-		{
-			type = "ruby",
-			request = "launch",
-			name = "Rails",
-			program = "bundle",
-			programArgs = { "exec", "rails", "s" },
-			useBundler = true,
-		},
-	}
+	dap.configurations.typescript = dap.configurations.javascript
 end
 return M

@@ -1,6 +1,7 @@
 return {
 	"folke/persistence.nvim",
-	event = "BufReadPre",
+	-- event = "BufReadPre",
+	event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 	opts = {},
   -- stylua: ignore
   keys = {

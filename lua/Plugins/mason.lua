@@ -20,8 +20,9 @@ return {
 			ui = {
 				check_outdated_packages_on_open = true,
 				---|>Border single, double, rounded, none, solid, shadow
-				border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
-				width = 0.7,
+				-- border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+				border = "rounded",
+				width = 0.5,
 				height = 0.7,
 				icons = {
 					package_installed = "󰄴",
@@ -49,9 +50,10 @@ return {
 			automatic_installation = true,
 			ensure_installed = {
 				"bashls", --Bash
+				"biome", --JSon, JavaScript, TypeScript
 				"clangd", --C/C++
 				"cssls", --CSS,SCSS,LESS
-				"eslint", --JavaScript, TypeScript
+				-- "eslint", --JavaScript, TypeScript
 				"html", --HTML
 				-- "jedi_language_server", --Django (Python)
 				"lua_ls", --Lua (formerly "sumneko_lua")
@@ -70,8 +72,8 @@ return {
 		require("mason-tool-installer").setup({
 			auto_update = true,
 			run_on_start = true,
-			start_delay = 3000, -- 3-second delay to avoid startup lag
-			debounce_hours = 24, -- Auto-update at most once every 24 hours
+			-- start_delay = 2000, -- 2-second delay to avoid startup lag
+			-- debounce_hours = 24, -- Auto-update at most once every 24 hours
 			ensure_installed = {
 				---|>(3)DAP
 				"codelldb", --C, C++, Rust, Zig
@@ -79,7 +81,7 @@ return {
 				"js-debug-adapter", --JavaScript, TypeScript
 				---|>(4)Linter
 				"cpplint", --C,C++
-				"eslint_d", --JavaScript, TypeScript
+				-- "eslint_d", --JavaScript, TypeScript
 				"gitlint",
 				"htmlhint", --HTML
 				"jsonlint", --JSON

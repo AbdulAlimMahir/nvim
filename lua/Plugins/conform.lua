@@ -2,8 +2,8 @@ return {
 	"stevearc/conform.nvim",
 	lazy = true,
 	cmd = "ConformInfo",
-	event = { "BufWritePre" },
-	dependencies = { "mason.nvim" },
+	event = "BufWritePre",
+	dependencies = "mason.nvim",
 	keys = {
 		{
 			"<leader>cF",
@@ -15,6 +15,10 @@ return {
 		},
 	},
 	opts = {
+		timeout_ms = 3000,
+		async = false, -- not recommended to change
+		quiet = false, -- not recommended to change
+		lsp_format = "fallback", -- not recommended to change
 		formatters_by_ft = {
 			html = { "prettierd" },
 			css = { "biome-check" },

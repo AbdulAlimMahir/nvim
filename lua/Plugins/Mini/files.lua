@@ -30,10 +30,8 @@ return {
 		},
 
 		windows = {
-			max_number = math.huge,
 			preview = true,
 			width_focus = 30,
-			width_nofocus = 30,
 			width_preview = 60,
 		},
 	}),

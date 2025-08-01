@@ -1,11 +1,12 @@
 return {
 	-- "echasnovski/mini.diff",
+	enabled = false,
 	lazy = true,
-	-- cmd = { "MiniDiffview", "MiniDiffclose", "MiniDiffput", "MiniDiffget" },
-	-- event = "User FilePost", --{ "BufReadPre", "BufNewFile" },
+	event = "VeryLazy",
 	require("mini.diff").setup({
 		view = {
 			-- Default: 'number' if line numbers are enabled, 'sign' otherwise.
+			style = "sign",
 			signs = { add = "▒", change = "▒", delete = "▒" },
 			priority = 199,
 		},

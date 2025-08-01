@@ -1,6 +1,6 @@
 return {
 	"mfussenegger/nvim-lint",
-	event = { "BufWritePost", "BufReadPost", "InsertLeave" },
+	event = "User MasonLspFileType", --{ "BufWritePost", "BufReadPost", "InsertLeave" },
 	-- ft = {
 	-- 	"javascript",
 	-- 	"typescript",

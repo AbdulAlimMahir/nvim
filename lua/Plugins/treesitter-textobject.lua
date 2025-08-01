@@ -1,6 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter-textobjects",
-	event = "VeryLazy",
+	event = "User MasonLspFileType", --{ "BufReadPost", "BufNewFile" },
+	after = "nvim-treesitter",
 	enabled = true,
 	config = function()
 		-- When in diff mode, we want to use the default

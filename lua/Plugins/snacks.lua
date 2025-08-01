@@ -34,7 +34,7 @@ return {
 		quickfile = { enabled = true, exclude = { "latex" } },
 		scope = require("Plugins.Snacks.scope"),
 		scroll = require("Plugins.Snacks.scroll"),
-		statuscolumn = { enabled = true },
+		statuscolumn = require("Plugins.Snacks.statuscolumn"),
 		styles = require("Plugins.Snacks.styles"),
 		terminal = require("Plugins.Snacks.terminal"),
 		toggle = require("Plugins.Snacks.toggle"),
@@ -60,7 +60,7 @@ return {
 			function()
 				require("snacks").bufdelete()
 			end,
-			desc = "Delete Buffer",
+			desc = "Close Buffer",
 		},
 
 		{

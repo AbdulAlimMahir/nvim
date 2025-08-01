@@ -1,15 +1,16 @@
 return {
 	"folke/trouble.nvim",
-	cmd = { "TroubleToggle", "Trouble" },
+	-- cmd = { "TroubleToggle", "Trouble" },
+	event = "InsertLeave",
 	dependencies = {
 		"folke/todo-comments.nvim",
-		"nvim-tree/nvim-web-devicons",
-		-- "echasnovski/mini.icons",
+		-- "nvim-tree/nvim-web-devicons",
+		"echasnovski/mini.icons",
 	},
 	opts = {
-		auto_close = false, -- auto close when there are no items
+		auto_close = true, -- auto close when there are no items
 		auto_open = false, -- auto open when there are items
-		auto_preview = true, -- automatically open preview when on an item
+		auto_preview = false, -- automatically open preview when on an item
 		auto_refresh = true, -- auto refresh when open
 		auto_jump = false, -- auto jump to the item when there's only one
 		focus = false, -- Focus the window when opened
@@ -20,12 +21,10 @@ return {
 		multiline = true, -- render multi-line messages
 		pinned = false, -- When pinned, the opened trouble window will be bound to the current buffer
 		warn_no_results = true, -- show a warning when there are no results
-		open_no_results = false, -- open the trouble window when there are no results
-		---@type trouble.Window.opts
+		open_no_results = false, -- open the trou
 		win = {}, -- window options for the results window. Can be a split or a floating window.
 		-- Window options for the preview window. Can be a split, floating window,
 		-- or `main` to show the preview in the main editor window.
-		---@type trouble.Window.opts
 		preview = {
 			type = "main",
 			-- when a buffer is not yet loaded, the preview window will be created
@@ -49,7 +48,7 @@ return {
 			R = "toggle_refresh",
 			q = "close",
 			o = "jump_close",
-			["<esc>"] = "cancel",
+			-- ["<esc>"] = "cancel",
 			["<cr>"] = "jump",
 			["<2-leftmouse>"] = "jump",
 			["<c-s>"] = "jump_split",
@@ -100,6 +99,10 @@ return {
 			},
 		},
 		modes = {
+			diagnostics = {
+				auto_open = true,
+				auto_preview = false,
+			},
 			lsp_references = {
 				params = {
 					include_declaration = true,

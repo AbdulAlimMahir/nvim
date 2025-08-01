@@ -1,6 +1,6 @@
 return {
 	"lewis6991/gitsigns.nvim",
-	event = "BufReadPost",
+	event = "User MasonLspFileType", --"BufReadPost",
 	config = function()
 		local success, gitsigns = pcall(require, "gitsigns")
 		if not success then
@@ -9,7 +9,6 @@ return {
 		end
 
 		gitsigns.setup({
-
 			signs = {
 				add = { text = "│" },
 				change = { text = "│" },
@@ -62,13 +61,5 @@ return {
 		vim.keymap.set("n", "<C-f>", gitsigns.stage_buffer)
 		vim.keymap.set("n", "<C-e>", gitsigns.blame_line)
 		vim.keymap.set("n", "<C-a>", gitsigns.blame)
-
-		-- vim.api.nvim_set_hl(0, "GitSignsAddInline", { fg = "NvimLightYellow", bg = "None" })
-		-- vim.api.nvim_set_hl(0, "GitSignsDeleteInline", { fg = "NvimLightYellow", bg = "None" })
-		-- vim.api.nvim_set_hl(0, "GitSignsStagedAdd", { fg = "#AAAAAA" })
-		-- vim.api.nvim_set_hl(0, "GitSignsStagedChange", { fg = "#AAAAAA" })
-		-- vim.api.nvim_set_hl(0, "GitSignsStagedChangeDelete", { fg = "#AAAAAA" })
-
-		-- vim.api.nvim_set_hl(0, "GitSignsAddPreview", { link = "Statement" })
 	end,
 }

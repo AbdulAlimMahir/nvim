@@ -1,7 +1,6 @@
 return {
 	-- "echasnovski/mini.move",
-	lazy = true,
-	event = { "BufReadPost", "BufNewFile" },
+	event = "VeryLazy",
 	require("mini.move").setup({
 		mappings = {
 			-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.

@@ -2,7 +2,7 @@ return {
 	"saghen/blink.cmp",
 	version = "*",
 	build = "cargo build --release",
-	event = { "InsertEnter" },
+	event = "InsertEnter",
 	opts_extend = {
 		"sources.completion.enabled_providers",
 		"sources.compat",

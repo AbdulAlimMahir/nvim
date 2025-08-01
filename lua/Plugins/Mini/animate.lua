@@ -1,6 +1,13 @@
 return {
 	-- "echasnovski/mini.animate",
+	{
+		"snacks.nvim",
+		opts = {
+			scroll = { enabled = false },
+		},
+	},
 	lazy = false,
+	event = "VeryLazy",
 	require("mini.animate").setup({
 		-- Cursor path
 		cursor = {

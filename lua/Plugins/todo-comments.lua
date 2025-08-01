@@ -1,7 +1,7 @@
 return {
 	"folke/todo-comments.nvim",
-	-- cmd = { "TodoTelescope", "TodoTrouble" },
-	event = { "BufReadPost" },
+	cmd = { "TodoTelescope", "TodoTrouble" },
+	-- event = "BufReadPost",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
 		{ "<leader>tq", "<cmd>TodoQuickFix<cr>", desc = "Todo QuickFix" },

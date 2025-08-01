@@ -7,14 +7,14 @@ end
 -------------------------------------------------------------------------------
 --|>[ A ]<|--
 --<> auto-sessions 󱣪
-M.Autosession = function()
-	map("n", "<leader>a", "", "A")
-	map("n", "<leader>aS", ":SessionSearch<CR>", "Sessions")
-	map("n", "<leader>ad", ":Autosession delete<CR>", "Delete Session")
-	map("n", "<leader>ap", ":SessionPurgeOrphaned<CR>", "Purge Empty Sessions")
-	map("n", "<leader>ar", ":SessionRestore<CR>", "Restore Session")
-	map("n", "<leader>as", ":SessionSave<CR>", "Save Session")
-end
+-- M.Autosession = function()
+-- 	map("n", "<leader>a", "", "A")
+-- 	map("n", "<leader>aS", ":SessionSearch<CR>", "Sessions")
+-- 	map("n", "<leader>ad", ":Autosession delete<CR>", "Delete Session")
+-- 	map("n", "<leader>ap", ":SessionPurgeOrphaned<CR>", "Purge Empty Sessions")
+-- 	map("n", "<leader>ar", ":SessionRestore<CR>", "Restore Session")
+-- 	map("n", "<leader>as", ":SessionSave<CR>", "Save Session")
+-- end
 
 -------------------------------------------------------------------------------
 --|>[ B ]<|--
@@ -41,21 +41,16 @@ M.Conform = function()
 	end, "Format File or Range(v)")
 end
 
---<> Volt -> Minty
--- map("n", "<leader>cp", function()
--- 	require("minty.huefy").open()
--- end, "Color Picker")
-
 -------------------------------------------------------------------------------
 --|>[ D ]<|--
 --<> Diagnostics
 map("n", "<leader>d", "", "D")
 map("n", "<leader>dl", vim.diagnostic.open_float, "Show line diagnostics")
 map("n", "dh", function()
-	vim.diagnostic.get_prev_pos()
+	vim.diagnostic.get_prev()
 end, "Go to previous diagnostic")
 map("n", "dl", function()
-	vim.diagnostic.get_next_pos()
+	vim.diagnostic.get_next()
 end, "Go to next diagnostic")
 map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
 map("n", "gK", vim.lsp.buf.hover, "Show documentation for what is under cursor")
@@ -92,30 +87,30 @@ end
 -------------------------------------------------------------------------------
 --|>[ H ]<|--
 --|> Harpoon2
-M.harpoon = function()
-	map("n", "<leader>h", "", "H")
-	map("n", "<leader>hl", function()
-		local harpoon = require("harpoon")
-		harpoon.ui:toggle_quick_menu(harpoon:list())
-	end, { desc = "󱠿 Harpoons" })
+-- M.harpoon = function()
+-- 	map("n", "<leader>h", "", "H")
+-- 	map("n", "<leader>hl", function()
+-- 		local harpoon = require("harpoon")
+-- 		harpoon.ui:toggle_quick_menu(harpoon:list())
+-- 	end, { desc = "󱠿 Harpoons" })
 
-	map("n", "<leader>ha", function()
-		require("harpoon"):list():add()
-	end, { desc = "󱡀 Add Harpoon" })
+-- 	map("n", "<leader>ha", function()
+-- 		require("harpoon"):list():add()
+-- 	end, { desc = "󱡀 Add Harpoon" })
 
-	for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
-		vim.keymap.set("n", string.format("<space>h%d", idx), function()
-			require("harpoon"):list():select(idx)
-		end, { desc = "󱡁 Aim Harpoon" })
-	end
-	map("n", "<leader>hh", function()
-		require("harpoon"):list():prev()
-	end, { desc = "󱡀 Previous" })
+-- 	for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
+-- 		vim.keymap.set("n", string.format("<space>h%d", idx), function()
+-- 			require("harpoon"):list():select(idx)
+-- 		end, { desc = "󱡁 Aim Harpoon" })
+-- 	end
+-- 	map("n", "<leader>hh", function()
+-- 		require("harpoon"):list():prev()
+-- 	end, { desc = "󱡀 Previous" })
 
-	map("n", "<leader>hl", function()
-		require("harpoon"):list():next()
-	end, { desc = "󱡀 Next" })
-end
+-- 	map("n", "<leader>hl", function()
+-- 		require("harpoon"):list():next()
+-- 	end, { desc = "󱡀 Next" })
+-- end
 
 -------------------------------------------------------------------------------
 --|>[ I ]<|--
@@ -163,28 +158,28 @@ M.MiniFiles = function()
 end
 
 --<>MiniSessions
-M.MiniSessions = function()
-	map("n", "<leader>ms", MiniSessions.select, "Mini Sessions")
-	map("n", "<leader>mw", function()
-		local buf_name = vim.fn.bufname("%")
-		local buf_count = #vim.fn.getbufinfo({ buflisted = 1 })
-		local session_name = string.format("%s_%d_buffers", buf_name:gsub("[^%w]", "_"), buf_count)
-		MiniSessions.write(session_name)
-	end, "Save Session")
-	map("n", "<leader>md", function()
-		MiniSessions.delete()
-	end, "Delete Sessions")
-end
+-- M.MiniSessions = function()
+-- 	map("n", "<leader>ms", MiniSessions.select, "Mini Sessions")
+-- 	map("n", "<leader>mw", function()
+-- 		local buf_name = vim.fn.bufname("%")
+-- 		local buf_count = #vim.fn.getbufinfo({ buflisted = 1 })
+-- 		local session_name = string.format("%s_%d_buffers", buf_name:gsub("[^%w]", "_"), buf_count)
+-- 		MiniSessions.write(session_name)
+-- 	end, "Save Session")
+-- 	map("n", "<leader>md", function()
+-- 		MiniSessions.delete()
+-- 	end, "Delete Sessions")
+-- end
 -------------------------------------------------------------------------------
 --|>[ N ]<|--
 -- map("n", "<leader>n", "", "N")
 --<> nvimtree
-M.NvimTree = function()
-	map("n", "<leader>nt", ":NvimTreeToggle<CR>", "File Explorer")
-	map("n", "<leader>nf", ":NvimTreeFindFileToggle<CR>", "󰈞 Toggle on Buffer")
-	map("n", "<leader>nc", ":NvimTreeCollapse<CR>", "Collapse file explorer")
-	map("n", "<leader>nr", ":NvimTreeRefresh<CR>", " Refresh File Explorer")
-end
+-- M.NvimTree = function()
+-- 	map("n", "<leader>nt", ":NvimTreeToggle<CR>", "File Explorer")
+-- 	map("n", "<leader>nf", ":NvimTreeFindFileToggle<CR>", "󰈞 Toggle on Buffer")
+-- 	map("n", "<leader>nc", ":NvimTreeCollapse<CR>", "Collapse file explorer")
+-- 	map("n", "<leader>nr", ":NvimTreeRefresh<CR>", " Refresh File Explorer")
+-- end
 
 -------------------------------------------------------------------------------
 --|>[ O ]<|--
@@ -201,16 +196,16 @@ map("n", "<leader>ow", ":%s/<C-r><C-w>/", "Replace cursor Word")
 map("v", "<leader>ow", '"hy:%s/<C-r>h//g<left><left>', "Replace cursor Word")
 
 --<>Convert.nvim
-M.Convert = function()
-	map({ "n", "v" }, "<leader>cn", "<cmd>ConvertFindNext<CR>", "Find next convertable unit")
-	map({ "n", "v" }, "<leader>cc", "<cmd>ConvertFindCurrent<CR>", "Find convertable unit in current line")
-	map({ "n", "v" }, "<leader>ca", "<cmd>ConvertAll<CR>", "Convert all of a specified unit")
-end
+-- M.Convert = function()
+-- 	map({ "n", "v" }, "<leader>cn", "<cmd>ConvertFindNext<CR>", "Find next convertable unit")
+-- 	map({ "n", "v" }, "<leader>cc", "<cmd>ConvertFindCurrent<CR>", "Find convertable unit in current line")
+-- 	map({ "n", "v" }, "<leader>ca", "<cmd>ConvertAll<CR>", "Convert all of a specified unit")
+-- end
 
 --<> Oil.nvim
-M.Oil = function()
-	map("n", "<leader>-", ":Oil<CR>", "Open Oil")
-end
+-- M.Oil = function()
+-- 	map("n", "<leader>-", ":Oil<CR>", "Open Oil")
+-- end
 
 -- --<> Theme Picker
 -- M.themePicker = function()
@@ -250,12 +245,12 @@ map("n", "<leader>sp", ":so %<CR>", "󰑓 Config") -- reload neovim config
 map("v", "<leader>sS", ":sort<CR>", " Sort Selected")
 
 --<>Substitute
-M.Substitute = function()
-	map("n", "sm", require("substitute").operator, "Substitute with motion")
-	map("n", "ss", require("substitute").line, "Substitute line")
-	map("n", "sS", require("substitute").eol, "Substitute to end of line")
-	map("v", "sv", require("substitute").visual, "Substitute in visual mode")
-end
+-- M.Substitute = function()
+-- 	map("n", "sm", require("substitute").operator, "Substitute with motion")
+-- 	map("n", "ss", require("substitute").line, "Substitute line")
+-- 	map("n", "sS", require("substitute").eol, "Substitute to end of line")
+-- 	map("v", "sv", require("substitute").visual, "Substitute in visual mode")
+-- end
 -------------------------------------------------------------------------------
 --|>[ T ]<|--
 map("n", "<leader>t", "", "t")
@@ -311,11 +306,11 @@ M.telescope = function()
 end
 
 --<> ToggleTerm
-M.ToggleTerm = function()
-	-- map("n", "<leader>T", "", "T")
-	map("n", "<leader>tf", ":toggleterm direction=float<cr>", "terminal")
-	map("n", "<leader>tf", ":toggleterm direction=float<cr>", "terminal")
-end
+-- M.ToggleTerm = function()
+-- 	-- map("n", "<leader>T", "", "T")
+-- 	map("n", "<leader>tf", ":toggleterm direction=float<cr>", "terminal")
+-- 	map("n", "<leader>tf", ":toggleterm direction=float<cr>", "terminal")
+-- end
 
 --<> Tabs 󰓩
 map("n", "<leader>Ts", ":tabs<CR>", "Tabs")
@@ -383,8 +378,4 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "<C-o>", "<C-o>zz")
 map("n", "<C-i>", "<C-i>zz")
 
--- Extract Colors
-M.Colors = function()
-	map("n", "<leader>uc", ":ExtractColors<CR>", "Extract Colors")
-end
 return M

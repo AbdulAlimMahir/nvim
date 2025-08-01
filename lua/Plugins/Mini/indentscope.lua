@@ -1,6 +1,7 @@
 return {
 	"echasnovski/mini.indentscope",
-	event = { "BufReadPost" },
+	enabled = false,
+	event = { "User FilePost" }, --"BufReadPost"
 	require("mini.indentscope").setup({
 		options = {
 			-- border = "both",

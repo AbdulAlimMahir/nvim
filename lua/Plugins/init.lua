@@ -8,6 +8,7 @@ return {
 	{
 		"nvim-neorg/neorg",
 		lazy = true, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+		enabled = false,
 		version = "*", -- Pin Neorg to the latest stable release
 		config = true,
 		dependencies = {
@@ -15,5 +16,4 @@ return {
 			{ "pysan3/pathlib.nvim", lazy = true, after = "nvim-neorg/neorg" },
 		},
 	},
-	{ "nvim-tree/nvim-web-devicons", lazy = false },
 }

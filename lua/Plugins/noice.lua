@@ -1,6 +1,6 @@
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
+	event = { "BufReadPost", "BufNewFile", "BufWritePre" }, --"VeryLazy",
 	dependencies = {
 		{ "MunifTanjim/nui.nvim", after = "folke/noice.nvim" },
 	},

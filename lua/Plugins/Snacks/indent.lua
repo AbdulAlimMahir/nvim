@@ -1,6 +1,13 @@
 -- HACK: Read Indent Docs @ https://github.com/folke/snacks.nvim/blob/main/docs/indent.md
 
 return {
+	{
+		"mini.nvim",
+		opts = {
+			MiniIndentscope = { enabled = false },
+		},
+	},
+
 	indent = {
 		priority = 1,
 		enabled = true, -- enable indent guides

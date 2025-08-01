@@ -1,7 +1,8 @@
 return {
 	-- "echasnovski/mini.comment",
 	lazy = true,
-	event = { "BufReadPost", "BufWritePost" },
+	-- event = { "BufReadPost", "BufWritePost" },
+	event = "VeryLazy",
 
 	require("mini.comment").setup({
 		-- Options which control module behavior
