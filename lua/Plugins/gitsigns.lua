@@ -52,14 +52,14 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>k", gitsigns.preview_hunk)
-		vim.keymap.set("n", "<leader>u", gitsigns.reset_hunk)
-		vim.keymap.set("n", "<leader>x", gitsigns.diffthis)
-		vim.keymap.set("n", "<leader>z", "<cmd>wincmd p | q<return>")
+		-- vim.keymap.set("n", "<leader>k", gitsigns.preview_hunk)
+		-- vim.keymap.set("n", "<leader>u", gitsigns.reset_hunk)
+		-- vim.keymap.set("n", "<leader>x", gitsigns.diffthis)
+		-- vim.keymap.set("n", "<leader>z", "<cmd>wincmd p | q<return>")
 
-		vim.keymap.set("n", "<C-g>", gitsigns.stage_hunk)
-		vim.keymap.set("n", "<C-f>", gitsigns.stage_buffer)
-		vim.keymap.set("n", "<C-e>", gitsigns.blame_line)
-		vim.keymap.set("n", "<C-a>", gitsigns.blame)
+		-- vim.keymap.set("n", "<C-g>", gitsigns.stage_hunk)
+		-- vim.keymap.set("n", "<C-f>", gitsigns.stage_buffer)
+		-- vim.keymap.set("n", "<C-e>", gitsigns.blame_line)
+		-- vim.keymap.set("n", "<C-a>", gitsigns.blame)
 	end,
 }

@@ -1,12 +1,8 @@
--- HACK: Read Profilier Docs @ https://github.com/folke/snacks.nvim/blob/main/docs/profiler.md
-
 return {
 	autocmds = true,
 	runtime = vim.env.VIMRUNTIME, ---@type string
-	opts = function()
-		require("snacks").toggle.profiler():map("<leader>pp")
-		require("snacks").toggle.profiler_highlights():map("<leader>ph")
-	end,
+	-- thresholds for buttons to be shown as info, warn or error
+	-- value is a tuple of [warn, error]
 	thresholds = {
 		time = { 2, 10 },
 		pct = { 10, 20 },
@@ -23,7 +19,7 @@ return {
 		align = 80,
 	},
 	pick = {
-		picker = "auto",
+		picker = "snacks",
 		badges = { "time", "count", "name" },
 		preview = {
 			badges = { "time", "pct", "count" },
@@ -43,12 +39,15 @@ return {
 			return { filter = { def_plugin = vim.fn.input("Filter by plugin: ") } }
 		end,
 	},
+	---@type string[]
 	globals = {
-		"vim",
-		"vim.api",
-		"vim.keymap",
-		"Snacks.dashboard.Dashboard",
+		-- "vim",
+		-- "vim.api",
+		-- "vim.keymap",
+		-- "Snacks.dashboard.Dashboard",
 	},
+	-- filter modules by pattern.
+	-- longest patterns are matched first
 	filter_mod = {
 		default = true, -- default value for unmatched patterns
 		["^vim%."] = false,

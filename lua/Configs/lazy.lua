@@ -27,7 +27,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
 	defaults = {
-		lazy = false, -- should plugins be lazy-loaded?
+		lazy = true, -- should plugins be lazy-loaded?
 		version = false, -- always use the latest git commit
 	},
 	spec = {
@@ -63,10 +63,9 @@ require("lazy").setup({
 		colorscheme = { "habamax" },
 	},
 	ui = {
-		size = { width = 0.7, height = 0.7 },
+		size = { width = 0.6, height = 0.8 },
 		wrap = true, -- wrap the lines in the ui
-		-- border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }, --single, double, rounded, none, solid, shadow
-		border = "rounded",
+		border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }, --single, double, rounded, none, solid, shadow
 		backdrop = 80, -- opacity >0 <100
 		title = nil, ---@type string only works when border is not "none"
 		title_pos = "center", ---@type "center" | "left" | "right"
@@ -81,18 +80,18 @@ require("lazy").setup({
 			import = "",
 			keys = "",
 			lazy = "󰂠 ",
-			loaded = "󰄳",
+			loaded = "",
 			not_loaded = "○",
-			plugin = "",
+			plugin = "", --
 			runtime = "",
 			require = "󰢱",
 			source = "",
 			start = "",
 			task = "✔",
 			list = {
-				"●",
-				"○",
-				"",
+				"",
+				"󰆢",
+				"󰔷",
 				"",
 			},
 		},
@@ -159,7 +158,7 @@ require("lazy").setup({
 	},
 	state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
 	profiling = {
-		loader = true,
-		require = true,
+		loader = false,
+		require = false,
 	},
 })

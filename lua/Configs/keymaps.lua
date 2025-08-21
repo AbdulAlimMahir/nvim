@@ -5,7 +5,8 @@ local function map(mode, l, r, desc)
 	vim.keymap.set(mode, l, r, { desc = desc })
 end
 -------------------------------------------------------------------------------
---|>[ A ]<|--
+---|>[ A ]<|---
+-- map("n", "<leader>a", "", "")
 --<> auto-sessions 󱣪
 -- M.Autosession = function()
 -- 	map("n", "<leader>a", "", "A")
@@ -17,21 +18,22 @@ end
 -- end
 
 -------------------------------------------------------------------------------
---|>[ B ]<|--
+---|>[ B ]<|---
 --<> bufferline 
-map("n", "<leader>b", "", "B")
+map("n", "<leader>b", "", " Buffer")
 map("n", "<leader>bh", ":bprev<CR>", " Previous")
 map("n", "<leader>bl", ":bnext<CR>", " Next")
 map("n", "<leader>bp", ":bnext ", " Go to Buffer")
--- map("n", "<leader>bq", ":bdelete<CR>", "󰅙 Current")
+map("n", "<leader>bq", ":bdelete<CR>", "󰅙 Current")
+
 -------------------------------------------------------------------------------
---|>[ C ]<|--
+---|>[ C ]<|---
 --<> Code Action
+map("n", "<leader>c", "", "󰅩 Code Actions")
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Actions")
 
 --<> Conform 󰗈
 M.Conform = function()
-	map("n", "<leader>c", "", "C")
 	map({ "n", "v" }, "<leader>cf", function()
 		require("conform").format({
 			lsp_fallback = true,
@@ -42,9 +44,9 @@ M.Conform = function()
 end
 
 -------------------------------------------------------------------------------
---|>[ D ]<|--
+---|>[ D ]<|---
 --<> Diagnostics
-map("n", "<leader>d", "", "D")
+map("n", "<leader>d", "", " Diagnostics")
 map("n", "<leader>dl", vim.diagnostic.open_float, "Show line diagnostics")
 map("n", "dh", function()
 	vim.diagnostic.get_prev()
@@ -56,37 +58,37 @@ map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
 map("n", "gK", vim.lsp.buf.hover, "Show documentation for what is under cursor")
 
 -------------------------------------------------------------------------------
---|>[ E ]<|--
+---|>[ E ]<|---
 
 -------------------------------------------------------------------------------
---|>[ F ]<|--
+---|>[ F ]<|---
 --<> Neovim's Terminal
-M.floaterm = function()
-	vim.keymap.set("n", "<leader>ft", ":Floaterm<CR>", { desc = " FloaTerm" })
-	vim.keymap.set("n", "<leader>fH", ":split | terminal<CR>", { desc = " Horizontal Terminal" })
-	vim.keymap.set("n", "<leader>fV", ":vsplit | terminal<CR>", { desc = " Vertical Terminal" })
+-- M.terminal = function()
+-- 	vim.keymap.set("n", "<leader>ft", ":Floaterm<CR>", { desc = " FloaTerm" })
+-- 	vim.keymap.set("n", "<leader>fH", ":split | terminal<CR>", { desc = " Horizontal Terminal" })
+-- 	vim.keymap.set("n", "<leader>fV", ":vsplit | terminal<CR>", { desc = " Vertical Terminal" })
 
-	-- Terminal mode keymaps
-	local opts = { buffer = 0 }
-	vim.api.nvim_create_autocmd("TermOpen", {
-		pattern = "term://*",
-		callback = function()
-			vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-			vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-			vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], opts)
-			vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], opts)
-			vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], opts)
-			vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], opts)
-			vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
-		end,
-	})
-end
+-- 	-- Terminal mode keymaps
+-- 	local opts = { buffer = 0 }
+-- 	vim.api.nvim_create_autocmd("TermOpen", {
+-- 		pattern = "term://*",
+-- 		callback = function()
+-- 			vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+-- 			vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
+-- 			vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], opts)
+-- 			vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], opts)
+-- 			vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], opts)
+-- 			vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], opts)
+-- 			vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
+-- 		end,
+-- 	})
+-- end
 -------------------------------------------------------------------------------
---|>[ G ]<|--
+---|>[ G ]<|---
 
 -------------------------------------------------------------------------------
---|>[ H ]<|--
---|> Harpoon2
+---|>[ H ]<|---
+---|> Harpoon2
 -- M.harpoon = function()
 -- 	map("n", "<leader>h", "", "H")
 -- 	map("n", "<leader>hl", function()
@@ -113,35 +115,35 @@ end
 -- end
 
 -------------------------------------------------------------------------------
---|>[ I ]<|--
+---|>[ I ]<|---
 
 -------------------------------------------------------------------------------
---|>[ J ]<|--
+---|>[ J ]<|---
 
 -------------------------------------------------------------------------------
---|>[ K ]<|--
+---|>[ K ]<|---
 
 -------------------------------------------------------------------------------
---|>[ L ]<|--
+---|>[ L ]<|---
+map("n", "<leader>l", "", " Live Server")
 --<> LazyGit 󰊢
 M.LazyGit = function()
-	map("n", "<leader>l", "", "L")
 	map("n", "<leader>lG", ":LazyGit<CR>", "Open LazyGit")
 end
 --<> Live-Server
 M.LiveServer = function()
 	map("n", "<leader>ls", ":LiveServerStart<CR>", "󱜠 Start Server")
 	map("n", "<leader>lx", ":LiveServerStop<CR>", " Stop Server")
-	map("n", "<leader>lt", ":LiveServerToggle<CR>", "Toggle Server")
+	map("n", "<leader>lt", ":LiveServerToggle<CR>", " Toggle Server")
 end
 
 --<> LSP
-map("n", "<leader>lr", vim.lsp.buf.rename, "Smart rename")
-map("n", "<leader>lr", ":LspRestart<CR>", "Restart LSP")
+-- map("n", "<leader>lr", vim.lsp.buf.rename, "Smart rename")
+-- map("n", "<leader>lr", ":LspRestart<CR>", "Restart LSP")
 
 -------------------------------------------------------------------------------
---|>[ M ]<|--
-map("n", "<leader>m", "", "M")
+---|>[ M ]<|---
+map("n", "<leader>m", "", " Mini")
 
 --<> Markdown-Preview
 M.mdPreview = function()
@@ -170,8 +172,9 @@ end
 -- 		MiniSessions.delete()
 -- 	end, "Delete Sessions")
 -- end
+
 -------------------------------------------------------------------------------
---|>[ N ]<|--
+---|>[ N ]<|---
 -- map("n", "<leader>n", "", "N")
 --<> nvimtree
 -- M.NvimTree = function()
@@ -182,9 +185,15 @@ end
 -- end
 
 -------------------------------------------------------------------------------
---|>[ O ]<|--
+---|>[ O ]<|---
 --<>Options
-map("n", "<leader>o", "", "O")
+map("n", "<leader>o", "", " Others")
+---|> source config
+map("n", "<leader>or", function()
+	vim.cmd.source("%")
+	print(" 󰑓 Config Reloaded ")
+end, "󰑓 Config") -- reload neovim config
+map("n", "<leader>oL", ":Lazy<CR>", "󰂠 Lazy")
 map(
 	"n",
 	"<leader>oC",
@@ -219,29 +228,28 @@ M.Togglr = function()
 end
 
 -------------------------------------------------------------------------------
---|>[ P ]<|--
+---|>[ P ]<|---
 -- map("n", "<leader>ps", function()
 -- 	require("snacks").profiler.scratch()
 -- end, "Profiler Scratch Buffer")
 
 -------------------------------------------------------------------------------
---|>[ Q ]<|--
+---|>[ Q ]<|---
 
 -------------------------------------------------------------------------------
---|>[ R ]<|--
+---|>[ R ]<|---
+
 -------------------------------------------------------------------------------
---|>[ S ]<|--
-map("n", "<leader>s", "", "S")
---|> Split Windows 󰨑
+----|>[ S ]<|----
+map("n", "<leader>s", "", "󰨑 Splits")
+---|> Split Windows 󰨑
 map("n", "<leader>sv", ":vsplit<CR>", " Vertical Split")
 map("n", "<leader>sh", ":split<CR>", " Horizontal Split")
 map("n", "<leader>se", ":split=<CR>", "󰇽 Equal Split")
 map("n", "<leader>sx", ":close<CR>", "󰱝 Close Split")
+-- map("n", "<leader>st", ":lua Snacks.terminal.toggle()<CR>", "Snacks Terminal")
 
---|> source config
-map("n", "<leader>sp", ":so %<CR>", "󰑓 Config") -- reload neovim config
-
---|>Sort selected
+---|>Sort selected
 map("v", "<leader>sS", ":sort<CR>", " Sort Selected")
 
 --<>Substitute
@@ -252,9 +260,10 @@ map("v", "<leader>sS", ":sort<CR>", " Sort Selected")
 -- 	map("v", "sv", require("substitute").visual, "Substitute in visual mode")
 -- end
 -------------------------------------------------------------------------------
---|>[ T ]<|--
-map("n", "<leader>t", "", "t")
---|> telescope
+
+---|>[ T ]<|---
+map("n", "<leader>t", "", " Telescope")
+---|> telescope
 M.telescope = function()
 	map("n", "<leader>tb", function()
 		require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
@@ -305,9 +314,9 @@ M.telescope = function()
 	end, "Show LSP type definitions")
 end
 
+map("n", "<leader>T", "", "󰓩 Tabs")
 --<> ToggleTerm
 -- M.ToggleTerm = function()
--- 	-- map("n", "<leader>T", "", "T")
 -- 	map("n", "<leader>tf", ":toggleterm direction=float<cr>", "terminal")
 -- 	map("n", "<leader>tf", ":toggleterm direction=float<cr>", "terminal")
 -- end
@@ -332,32 +341,32 @@ M.trouble = function()
 end
 
 -------------------------------------------------------------------------------
---|>[ U ]<|--
+---|>[ U ]<|---
 
 -------------------------------------------------------------------------------
---|>[ V ]<|--
+---|>[ V ]<|---
 
 -------------------------------------------------------------------------------
---|>[ W ]<|--
-
------------C--------------------------------------------------------------------
---|>[ X ]<|--
+---|>[ W ]<|---
 
 -------------------------------------------------------------------------------
---|>[ Y ]<|--
+---|>[ X ]<|---
 
 -------------------------------------------------------------------------------
---|>[ Z ]<|--
+---|>[ Y ]<|---
 
 -------------------------------------------------------------------------------
---|>[ Without a Leader ]<|--
+---|>[ Z ]<|---
+
+-------------------------------------------------------------------------------
+---|>[ Without a Leader ]<|---
 map("n", "<C->", "", "CTRL")
 --<> Split Navigation
 map("n", "<C-h>", ":wincmd h<cr>", " Move to Split")
 map("n", "<C-j>", ":wincmd j<cr>", " Move to Split")
 map("n", "<C-k>", ":wincmd k<cr>", " Move to Split")
 map("n", "<C-l>", ":wincmd l<cr>", " Move to Split")
---|> Terminal Navigation
+---|> Terminal Navigation
 map("t", "<C-h>", "<C-\\><C-N><C-h>", " Left Terminal")
 map("t", "<C-j>", "<C-\\><C-N><C-j>", " Bottom Terminal")
 map("t", "<C-k>", "<C-\\><C-N><C-k>", " Top Terminal")

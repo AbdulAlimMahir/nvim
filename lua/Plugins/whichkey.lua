@@ -3,7 +3,7 @@ return {
 	cmd = { "WhichKey" },
 	event = "VeryLazy",
 	opts = {
-		preset = "helix",
+		preset = "helix", -- classic, modern, helix
 		delay = 100,
 		plugins = {
 			marks = true,
@@ -13,20 +13,20 @@ return {
 				suggestions = 20,
 			},
 			presets = {
-				operators = false,
+				operators = true,
 				motions = true,
-				text_objects = false,
-				windows = false,
-				nav = false,
-				z = false,
-				g = false,
+				text_objects = true,
+				windows = true,
+				nav = true,
+				z = true,
+				g = true,
 			},
 		},
 		win = {
 			border = "rounded",
 			no_overlap = true,
-			padding = { 1, 3 }, --[top/bottom 1:3 right/left]
-			title = false,
+			padding = { 1, 2 }, --[top/bottom 1:3 right/left]
+			title = true,
 			title_pos = "center",
 			zindex = 1000,
 		},
@@ -36,8 +36,8 @@ return {
 		},
 		icons = {
 			breadcrumb = "»", -- command line active key combo
-			separator = "➜", -- symbol used between a key and it's label
-			group = "+", -- symbol prepended to a group
+			separator = "", -- symbol used between a key and it's label
+			group = "+ ", -- symbol prepended to a group
 			ellipsis = "…",
 			mappings = false,
 			rules = {},
@@ -73,7 +73,6 @@ return {
 				F12 = "󱊶",
 			},
 		},
-		-- ignore_missing = true,
 		show_help = true,
 		show_keys = true,
 		disable = {

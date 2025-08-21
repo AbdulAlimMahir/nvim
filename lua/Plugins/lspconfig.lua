@@ -1,11 +1,11 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = "User MasonLspFileType",
-	dependencies = {
-		"saghen/blink.cmp", -- Ensure Blink is integrated
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-	},
+	-- dependencies = {
+	-- 	"saghen/blink.cmp", -- Ensure Blink is integrated
+	-- 	"williamboman/mason.nvim",
+	-- 	"williamboman/mason-lspconfig.nvim",
+	-- },
 
 	config = function()
 		local capabilities = require("blink.cmp").get_lsp_capabilities()

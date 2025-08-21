@@ -65,6 +65,22 @@ autocmd({ "FileType" }, {
 })
 
 -------------------------------
+---|>snacks.rename
+autocmd("User", {
+	pattern = "MiniFilesActionRename",
+	callback = function(event)
+		Snacks.rename.on_rename_file(event.data.from, event.data.to)
+	end,
+})
+autocmd("User", {
+	pattern = "OilActionsPost",
+	callback = function(event)
+		if event.data.actions.type == "move" then
+			Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
+		end
+	end,
+})
+
 ---|>Yank_Highlight
 autocmd("TextYankPost", {
 	group = augroup("highlight_yank"),

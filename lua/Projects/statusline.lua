@@ -138,6 +138,11 @@ M.diagnostics = function()
 	return table.concat(parts, "") .. " "
 end
 
+--|>Snacks.Profiler
+M.profiler = function()
+	return require("snacks").profiler.status()
+end
+
 --|> bufferLSP
 M.bufferLSP = function()
 	local clients = vim.lsp.get_clients({ bufnr = 0 })

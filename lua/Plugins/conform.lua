@@ -3,7 +3,7 @@ return {
 	lazy = true,
 	cmd = "ConformInfo",
 	event = "BufWritePre",
-	dependencies = "mason.nvim",
+	-- dependencies = "mason.nvim",
 	keys = {
 		{
 			"<leader>cF",

@@ -2,12 +2,12 @@ return {
 	"MeanderingProgrammer/render-markdown.nvim",
 	cmd = { "RenderMarkdown" },
 	ft = { "markdown" },
-	after = { "nvim-treesitter" },
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter",
-		-- "nvim-tree/nvim-web-devicons",
-		"echasnovski/mini.icons",
-	},
+	-- after = { "nvim-treesitter" },
+	-- dependencies = {
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	-- "nvim-tree/nvim-web-devicons",
+	"echasnovski/mini.icons",
+	-- },
 	opts = {
 		-- Whether Markdown should be rendered by default or not
 		enabled = true,

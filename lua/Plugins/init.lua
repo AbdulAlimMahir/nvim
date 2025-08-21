@@ -1,4 +1,5 @@
 return {
+	{ "nvim-lua/plenary.nvim", lazy = true },
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1000, -- high priority is required

@@ -24,100 +24,115 @@ return {
 		},
 		gitbrowse = require("Plugins.Snacks.gitbrowse"),
 		health = { enabled = true },
+		image = { enabled = true },
 		indent = require("Plugins.Snacks.indent"),
-		image = require("Plugins.Snacks.image"),
 		input = { enabled = true },
+		layout = { enabled = true },
 		lazygit = require("Plugins.Snacks.lazygit"),
 		notifier = require("Plugins.Snacks.notifier"),
+		notify = { enabled = true },
 		picker = require("Plugins.Snacks.picker"),
-		-- profiler = require("Plugins.Snacks.profiler"),
+		profiler = require("Plugins.Snacks.profiler"),
 		quickfile = { enabled = true, exclude = { "latex" } },
+		rename = { enabled = true },
 		scope = require("Plugins.Snacks.scope"),
 		scroll = require("Plugins.Snacks.scroll"),
 		statuscolumn = require("Plugins.Snacks.statuscolumn"),
 		styles = require("Plugins.Snacks.styles"),
-		terminal = require("Plugins.Snacks.terminal"),
+		-- terminal = require("Plugins.Snacks.terminal"),
 		toggle = require("Plugins.Snacks.toggle"),
+		util = { enabled = true },
+		win = { enabled = true },
 		words = { enabled = true },
+		zen = require("Plugins.Snacks.zen"),
 	},
 	keys = {
+		{ "<leader>S", "", desc = " Snacks" },
+		{ "<leader>Sb", "", desc = " Snack.Buffers" },
 		-- {
-		-- 	"<leader>.",
+		-- 	"<leader>Sbs,
 		-- 	function()
 		-- 		require("snacks").scratch()
 		-- 	end,
-		-- 	desc = "Toggle Scratch Buffer",
+		-- 	desc = " Toggle Scratch Buffer",
 		-- },
 		-- {
-		-- 	"<leader>S",
+		-- 	"<leader>SbS",
 		-- 	function()
 		-- 		require("snacks").scratch.select()
 		-- 	end,
-		-- 	desc = "Select Scratch Buffer",
+		-- 	desc = " Select Scratch Buffer",
 		-- },
 		{
-			"<leader>bd",
+			"<leader>SbL",
+			function()
+				Snacks.picker.buffers()
+			end,
+			desc = " Buffers",
+		},
+		{
+			"<leader>Sbc",
 			function()
 				require("snacks").bufdelete()
 			end,
-			desc = "Close Buffer",
+			desc = " Close Buffer",
 		},
-
 		{
-			"<leader>or",
+			"<leader>Sbr",
 			function()
 				require("snacks").rename.rename_file()
 			end,
-			desc = "Rename File",
+			desc = " Rename File",
 		},
 		{
-			"<leader>gB",
+			"<leader>Se",
+			function()
+				Snacks.explorer()
+			end,
+			desc = " Explorer",
+		},
+		{ "<leader>Sg", "", desc = " Snacks.Git" },
+		{
+			"<leader>Sgb",
 			function()
 				require("snacks").gitbrowse()
 			end,
-			desc = "Git Browse",
+			desc = " Git Browse",
 		},
 		{
-			"<leader>gb",
+			"<leader>SgB",
 			function()
 				require("snacks").git.blame_line()
 			end,
-			desc = "Git Blame Line",
+			desc = " Git Blame Line",
 		},
 		{
-			"<leader>gf",
+			"<leader>Sgh",
 			function()
 				require("snacks").lazygit.log_file()
 			end,
-			desc = "Lazygit Current File History",
+			desc = " Lazygit Current File History",
 		},
 		{
-			"<leader>gg",
+			"<leader>SgL",
 			function()
 				require("snacks").lazygit()
 			end,
-			desc = "Lazygit",
+			desc = " Lazygit",
 		},
 		{
-			"<leader>gl",
+			"<leader>Sgl",
 			function()
 				require("snacks").lazygit.log()
 			end,
 			desc = "Lazygit Log (cwd)",
 		},
 		{
-			"<leader>oN",
-			function()
-				require("snacks").notifier.hide()
-			end,
-			desc = "Dismiss All Notifications",
-		},
-		{
 			"<c-/>",
 			function()
 				require("snacks").terminal()
 			end,
-			desc = "Toggle Terminal",
+			desc = " Toggle Terminal",
 		},
 		{
 			"<c-_>",
@@ -131,7 +146,7 @@ return {
 			function()
 				require("snacks").words.jump(vim.v.count1)
 			end,
-			desc = "Next Reference",
+			desc = " Next Reference",
 			mode = { "n", "t" },
 		},
 		{
@@ -139,99 +154,45 @@ return {
 			function()
 				require("snacks").words.jump(-vim.v.count1)
 			end,
-			desc = "Prev Reference",
+			desc = " Prev Reference",
 			mode = { "n", "t" },
 		},
-		-- {
-		-- 	"<leader>N",
-		-- 	desc = "Neovim News",
-		-- 	function()
-		-- 		Snacks.win({
-		-- 			file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-		-- 			width = 0.6,
-		-- 			height = 0.6,
-		-- 			wo = {
-		-- 				spell = false,
-		-- 				wrap = false,
-		-- 				signcolumn = "yes",
-		-- 				statuscolumn = " ",
-		-- 				conceallevel = 3,
-		-- 			},
-		-- 		})
-		-- 	end,
-		-- },
-		------------------------------
+		{ "<leader>SG", "", desc = " Snacks.Grep" },
 		{
-			"<leader><space>",
+			"<leader>SGf",
 			function()
 				Snacks.picker.smart()
 			end,
-			desc = "Smart Find Files",
+			desc = " Grep Files",
 		},
-		-- {
-		-- 	"<leader>,",
-		-- 	function()
-		-- 		Snacks.picker.buffers()
-		-- 	end,
-		-- 	desc = "Buffers",
-		-- },
 		{
-			"<leader>/",
+			"<leader>SGs",
 			function()
 				Snacks.picker.grep()
 			end,
-			desc = "Grep",
+			desc = " Grep Strings",
 		},
+		{ "<leader>Sn", "", desc = " Snacks.Notifications" },
 		{
-			"<leader>on",
+			"<leader>Snh",
 			function()
 				require("snacks").notifier.show_history()
 			end,
-			desc = "Notification History",
+			desc = " Notification History",
 		},
 		{
-			"<leader>e",
+			"<leader>Snc",
 			function()
-				Snacks.explorer()
+				require("snacks").notifier.hide()
 			end,
-			desc = "File Explorer",
+			desc = " Clear Notifications",
 		},
 		{
-			"<leader>uc",
+			"<leader>Sc",
 			function()
 				require("snacks").picker.colorschemes()
 			end,
-			desc = "Snacks Colorscheme Picker",
+			desc = " Snacks Colorscheme Picker",
 		},
 	},
-	-- init = function()
-	-- 	vim.api.nvim_create_autocmd("User", {
-	-- 		pattern = "VeryLazy",
-	-- 		callback = function()
-	-- 			-- Setup some globals for debugging (lazy-loaded)
-	-- 			-- _G.dd = function(...)
-	-- 			-- 	Snacks.debug.inspect(...)
-	-- 			-- end
-	-- 			-- _G.bt = function()
-	-- 			-- 	Snacks.debug.backtrace()
-	-- 			-- end
-	-- 			vim.print = _G.dd -- Override print to use snacks for `:=` command
-
-	-- 			-- Create some toggle mappings
-	-- 			require("snacks").toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-	-- 			require("snacks").toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-	-- 			require("snacks").toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
-	-- 			require("snacks").toggle.diagnostics():map("<leader>ud")
-	-- 			require("snacks").toggle.line_number():map("<leader>ul")
-	-- 			require("snacks").toggle
-	-- 				.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-	-- 				:map("<leader>uc")
-	-- 			require("snacks").toggle.treesitter():map("<leader>uT")
-	-- 			require("snacks").toggle
-	-- 				.option("background", { off = "light", on = "dark", name = "Dark Background" })
-	-- 				:map("<leader>ub")
-	-- 			require("snacks").toggle.inlay_hints():map("<leader>uh")
-	-- 		end,
-	-- 	})
-	-- end,
 }
