@@ -1,84 +1,11 @@
 return {
-<<<<<<< HEAD
-  "nvim-treesitter/nvim-treesitter",
-  version = false,
-  lazy = vim.fn.argc(-1) == 0,
-  event = "User MasonLspFileType",
-  cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-  build = ":TSUpdate",
-  dependencies = "windwp/nvim-ts-autotag",
-  opts_extend = { "ensure_installed" },
-  opts = {
-    ensure_installed = {
-      "regex",
-      "bash",
-      "jsdoc",
-      "html",
-      "css",
-      "scss",
-      "javascript",
-      "json",
-      "jsonc",
-      "typescript",
-      "tsx",
-      "sql",
-      "php",
-      "yaml",
-      "markdown",
-      "markdown_inline",
-      "lua",
-      "vim",
-      "go",
-      "rust",
-      "query",
-      "vimdoc",
-      "c",
-      "cpp",
-      "python",
-    },
-
-    sync_install = false,
-    auto_install = true,
-
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false,
-    },
-    indent = { enable = true },
-    autotag = { enable = true },
-    autopairs = { enable = true },
-    textobjects = {
-      move = {
-        enable = true,
-        goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
-        goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-        goto_previous_start = {
-          ["[f"] = "@function.outer",
-          ["[c"] = "@class.outer",
-          ["[a"] = "@parameter.inner",
-        },
-        goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
-      },
-      select = { enable = true },
-    },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<C-space>",
-        node_incremental = "<C-space>",
-        scope_incremental = false,
-        node_decremental = "<bs>",
-      },
-    },
-  },
-=======
 	"nvim-treesitter/nvim-treesitter",
 	version = false,
 	lazy = vim.fn.argc(-1) == 0,
-	event = "User MasonLspFileType", --{ "BufReadPost", "BufNewFile" },
-	-- ft = "markdown_inline, yaml, python, vim, markdown, typescript, regex, tsx, query, bash, html, javascript, lua, json",
+	event = "User MasonLspFileType",
 	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 	build = ":TSUpdate",
+	dependencies = "windwp/nvim-ts-autotag",
 	opts_extend = { "ensure_installed" },
 	opts = {
 		ensure_installed = {
@@ -96,43 +23,29 @@ return {
 			"sql",
 			"php",
 			"yaml",
-			-- "prisma",
 			"markdown",
 			"markdown_inline",
-			-- "svelte",
-			-- "graphql",
 			"lua",
 			"vim",
-			-- "dockerfile",
-			-- "gitignore",
 			"go",
-			-- "http",
-			-- "java",
 			"rust",
 			"query",
 			"vimdoc",
-			-- "astro",
 			"c",
 			"cpp",
-			-- "csv",
 			"python",
-			-- "fish",
 		},
 
-		ignore_install = { "" },
 		sync_install = false,
 		auto_install = true,
-		modules = {},
 
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false,
 		},
 		indent = { enable = true },
-		-- enable autotagging (w/ nvim-ts-autotag plugin)
 		autotag = { enable = true },
 		autopairs = { enable = true },
-		-- List of parsers to ignore installing (or "all")
 		textobjects = {
 			move = {
 				enable = true,
@@ -157,5 +70,4 @@ return {
 			},
 		},
 	},
->>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 }

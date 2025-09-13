@@ -1,5 +1,4 @@
 return {
-<<<<<<< HEAD
   { "nvim-lua/plenary.nvim", lazy = true },
   {
     "vhyrro/luarocks.nvim",
@@ -157,24 +156,4 @@ return {
     },
     -- require("Configs.keymaps").Togglr(),
   },
-=======
-	{ "nvim-lua/plenary.nvim", lazy = true },
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000, -- high priority is required
-		event = "FileType lua",
-		config = true,
-	},
-	{
-		"nvim-neorg/neorg",
-		lazy = true, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-		enabled = false,
-		version = "*", -- Pin Neorg to the latest stable release
-		config = true,
-		dependencies = {
-			{ "nvim-neorg/lua-utils.nvim", lazy = true, after = "nvim-neorg/neorg" },
-			{ "pysan3/pathlib.nvim", lazy = true, after = "nvim-neorg/neorg" },
-		},
-	},
->>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 }
