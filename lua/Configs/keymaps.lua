@@ -2,7 +2,11 @@ local M = {}
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 local function map(mode, l, r, desc)
+<<<<<<< HEAD
   vim.keymap.set(mode, l, r, { desc = desc })
+=======
+	vim.keymap.set(mode, l, r, { desc = desc })
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 end
 -------------------------------------------------------------------------------
 ---|>[ A ]<|---
@@ -34,6 +38,7 @@ map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Actions")
 
 --<> Conform 󰗈
 M.Conform = function()
+<<<<<<< HEAD
   map({ "n", "v" }, "<leader>cf", function()
     require("conform").format({
       lsp_fallback = true,
@@ -41,6 +46,15 @@ M.Conform = function()
       timeout_ms = 1000,
     })
   end, "Format File or Range(v)")
+=======
+	map({ "n", "v" }, "<leader>cf", function()
+		require("conform").format({
+			lsp_fallback = true,
+			async = false,
+			timeout_ms = 1000,
+		})
+	end, "Format File or Range(v)")
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 end
 
 -------------------------------------------------------------------------------
@@ -49,10 +63,17 @@ end
 map("n", "<leader>d", "", " Diagnostics")
 map("n", "<leader>dl", vim.diagnostic.open_float, "Show line diagnostics")
 map("n", "dh", function()
+<<<<<<< HEAD
   vim.diagnostic.get_prev()
 end, "Go to previous diagnostic")
 map("n", "dl", function()
   vim.diagnostic.get_next()
+=======
+	vim.diagnostic.get_prev()
+end, "Go to previous diagnostic")
+map("n", "dl", function()
+	vim.diagnostic.get_next()
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 end, "Go to next diagnostic")
 map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
 map("n", "gK", vim.lsp.buf.hover, "Show documentation for what is under cursor")
@@ -128,6 +149,7 @@ map("n", "gK", vim.lsp.buf.hover, "Show documentation for what is under cursor")
 map("n", "<leader>l", "", " Live Server")
 --<> LazyGit 󰊢
 M.LazyGit = function()
+<<<<<<< HEAD
   map("n", "<leader>lG", ":LazyGit<CR>", "Open LazyGit")
 end
 --<> Live-Server
@@ -135,6 +157,15 @@ M.LiveServer = function()
   map("n", "<leader>ls", ":LiveServerStart<CR>", "󱜠 Start Server")
   map("n", "<leader>lx", ":LiveServerStop<CR>", " Stop Server")
   map("n", "<leader>lt", ":LiveServerToggle<CR>", " Toggle Server")
+=======
+	map("n", "<leader>lG", ":LazyGit<CR>", "Open LazyGit")
+end
+--<> Live-Server
+M.LiveServer = function()
+	map("n", "<leader>ls", ":LiveServerStart<CR>", "󱜠 Start Server")
+	map("n", "<leader>lx", ":LiveServerStop<CR>", " Stop Server")
+	map("n", "<leader>lt", ":LiveServerToggle<CR>", " Toggle Server")
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 end
 
 --<> LSP
@@ -147,6 +178,7 @@ map("n", "<leader>m", "", " Mini")
 
 --<> Markdown-Preview
 M.mdPreview = function()
+<<<<<<< HEAD
   map("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", "Markdown Preview")
 end
 --<>Mini.Files
@@ -157,6 +189,18 @@ M.MiniFiles = function()
   map("n", "<leader>mF", function()
     require("mini.files").open(vim.uv.cwd(), true)
   end, "Open mini.files (cwd)")
+=======
+	map("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", "Markdown Preview")
+end
+--<>Mini.Files
+M.MiniFiles = function()
+	map("n", "<leader>mf", function()
+		require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+	end, "Open mini.files (Directory of Current File)")
+	map("n", "<leader>mF", function()
+		require("mini.files").open(vim.uv.cwd(), true)
+	end, "Open mini.files (cwd)")
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 end
 
 --<>MiniSessions
@@ -190,6 +234,7 @@ end
 map("n", "<leader>o", "", " Others")
 ---|> source config
 map("n", "<leader>or", function()
+<<<<<<< HEAD
   vim.cmd.source("%")
   print(" 󰑓 Config Reloaded ")
 end, "󰑓 Config") -- reload neovim config
@@ -199,6 +244,17 @@ map(
   "<leader>oC",
   ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})<CR>",
   "Nvim Configs Directory"
+=======
+	vim.cmd.source("%")
+	print(" 󰑓 Config Reloaded ")
+end, "󰑓 Config") -- reload neovim config
+map("n", "<leader>oL", ":Lazy<CR>", "󰂠 Lazy")
+map(
+	"n",
+	"<leader>oC",
+	":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})<CR>",
+	"Nvim Configs Directory"
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 )
 map("n", "<leader>oh", ":nohl<CR>", "󰉥 Clear Highlights")
 map("n", "<leader>ow", ":%s/<C-r><C-w>/", "Replace cursor Word")
@@ -223,9 +279,15 @@ map("v", "<leader>ow", '"hy:%s/<C-r>h//g<left><left>', "Replace cursor Word")
 -- end
 
 --<> Togglr
+<<<<<<< HEAD
 -- M.Togglr = function()
 --   map({ "n", "v" }, "<leader>ot", ":lua require('togglr').toggle_word()<CR>", " Toggle Cursor Word")
 -- end
+=======
+M.Togglr = function()
+	map({ "n", "v" }, "<leader>ot", ":lua require('togglr').toggle_word()<CR>", " Toggle Cursor Word")
+end
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 
 -------------------------------------------------------------------------------
 ---|>[ P ]<|---
@@ -241,12 +303,21 @@ map("v", "<leader>ow", '"hy:%s/<C-r>h//g<left><left>', "Replace cursor Word")
 
 -------------------------------------------------------------------------------
 ----|>[ S ]<|----
+<<<<<<< HEAD
 map("n", "<leader>S", "", "󰨑 Splits")
 ---|> Split Windows 󰨑
 map("n", "<leader>Sv", ":vsplit<CR>", " Vertical Split")
 map("n", "<leader>Sh", ":split<CR>", " Horizontal Split")
 map("n", "<leader>Se", ":split=<CR>", "󰇽 Equal Split")
 map("n", "<leader>Sx", ":close<CR>", "󰱝 Close Split")
+=======
+map("n", "<leader>s", "", "󰨑 Splits")
+---|> Split Windows 󰨑
+map("n", "<leader>sv", ":vsplit<CR>", " Vertical Split")
+map("n", "<leader>sh", ":split<CR>", " Horizontal Split")
+map("n", "<leader>se", ":split=<CR>", "󰇽 Equal Split")
+map("n", "<leader>sx", ":close<CR>", "󰱝 Close Split")
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 -- map("n", "<leader>st", ":lua Snacks.terminal.toggle()<CR>", "Snacks Terminal")
 
 ---|>Sort selected
@@ -265,6 +336,7 @@ map("v", "<leader>sS", ":sort<CR>", " Sort Selected")
 map("n", "<leader>t", "", " Telescope")
 ---|> telescope
 M.telescope = function()
+<<<<<<< HEAD
   map("n", "<leader>tb", function()
     require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
       sort_mru = true,
@@ -312,6 +384,55 @@ M.telescope = function()
   map("n", "gt", function()
     require("telescope.builtin").lsp_type_definitions()
   end, "Show LSP type definitions")
+=======
+	map("n", "<leader>tb", function()
+		require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
+			sort_mru = true,
+			sort_lastused = true,
+			initial_mode = "normal",
+			layout_config = {
+				height = 0.5,
+				width = 0.5,
+				preview_width = 0.5,
+			},
+		}))
+	end, "Telescope Buffers")
+	map("n", "<leader>db", ":Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics")
+	-- map("n", "<leader>te", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "󰈞 Files")
+	map("n", "<leader>tf", function()
+		require("telescope.builtin").find_files()
+	end, " Files in CWD")
+	map("n", "<leader>tg", function()
+		require("telescope.builtin").git_files()
+	end, " Files in Git")
+	map("n", "<leader>tr", function()
+		require("telescope.builtin").oldfiles()
+	end, "󱋢 Recent Files")
+	map("n", "<leader>ts", function()
+		require("telescope.builtin").live_grep()
+	end, " Grep in CWD")
+	map("n", "<leader>tc", function()
+		require("telescope.builtin").grep_string()
+	end, "󱄧 Grep String in CWD")
+	map("n", "<leader>t/", function()
+		require("telescope.builtin").current_buffer_fuzzy_find()
+	end, "Find in here")
+	map("n", "<leader>th", function()
+		require("telescope.builtin").help_tags()
+	end, " Help")
+	map("n", "gR", function()
+		require("telescope.builtin").lsp_references()
+	end, "Show LSP references")
+	map("n", "gd", function()
+		require("telescope.builtin").lsp_definitions()
+	end, "Show LSP definitions")
+	map("n", "gi", function()
+		require("telescope.builtin").lsp_implementations()
+	end, "Show LSP implementations")
+	map("n", "gt", function()
+		require("telescope.builtin").lsp_type_definitions()
+	end, "Show LSP type definitions")
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 end
 
 map("n", "<leader>T", "", "󰓩 Tabs")
@@ -331,6 +452,7 @@ map("n", "<leader>TN", ":tabnew %<CR>", " Buffer in New Tab")
 
 --<> trouble
 M.trouble = function()
+<<<<<<< HEAD
   map("n", "<leader>t", ":Trouble<CR>", "Troubles Diagnosis")
   map("n", "<leader>tx", ":TroubleToggle<CR>", "Trouble list")
   map("n", "<leader>tw", ":TroubleToggle workspace_diagnostics<CR>", "Workspace Diagnostics")
@@ -338,6 +460,15 @@ M.trouble = function()
   map("n", "<leader>tq", ":TroubleToggle quickfix<CR>", "Quickfix List")
   map("n", "<leader>tl", ":TroubleToggle loclist<CR>", "Location List")
   -- map("n", "<leader>tt", ":TodoTrouble<CR>", "ToDo in Trouble")
+=======
+	map("n", "<leader>t", ":Trouble<CR>", "Troubles Diagnosis")
+	map("n", "<leader>tx", ":TroubleToggle<CR>", "Trouble list")
+	map("n", "<leader>tw", ":TroubleToggle workspace_diagnostics<CR>", "Workspace Diagnostics")
+	map("n", "<leader>td", ":TroubleToggle document_diagnostics<CR>", "Document Diagnostics")
+	map("n", "<leader>tq", ":TroubleToggle quickfix<CR>", "Quickfix List")
+	map("n", "<leader>tl", ":TroubleToggle loclist<CR>", "Location List")
+	-- map("n", "<leader>tt", ":TodoTrouble<CR>", "ToDo in Trouble")
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 end
 
 -------------------------------------------------------------------------------
@@ -362,10 +493,17 @@ end
 ---|>[ Without a Leader ]<|---
 map("n", "<C->", "", "CTRL")
 --<> Split Navigation
+<<<<<<< HEAD
 -- map("n", "<C-h>", ":wincmd h<cr>", " Move to Split")
 -- map("n", "<C-j>", ":wincmd j<cr>", " Move to Split")
 -- map("n", "<C-k>", ":wincmd k<cr>", " Move to Split")
 -- map("n", "<C-l>", ":wincmd l<cr>", " Move to Split")
+=======
+map("n", "<C-h>", ":wincmd h<cr>", " Move to Split")
+map("n", "<C-j>", ":wincmd j<cr>", " Move to Split")
+map("n", "<C-k>", ":wincmd k<cr>", " Move to Split")
+map("n", "<C-l>", ":wincmd l<cr>", " Move to Split")
+>>>>>>> 8bd7cd2ba9090bc335c41acd09b11e45de9db629
 ---|> Terminal Navigation
 map("t", "<C-h>", "<C-\\><C-N><C-h>", " Left Terminal")
 map("t", "<C-j>", "<C-\\><C-N><C-j>", " Bottom Terminal")
