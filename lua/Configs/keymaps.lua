@@ -2,7 +2,7 @@ local M = {}
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 local function map(mode, l, r, desc)
-	vim.keymap.set(mode, l, r, { desc = desc })
+  vim.keymap.set(mode, l, r, { desc = desc })
 end
 -------------------------------------------------------------------------------
 ---|>[ A ]<|---
@@ -34,13 +34,13 @@ map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Actions")
 
 --<> Conform 󰗈
 M.Conform = function()
-	map({ "n", "v" }, "<leader>cf", function()
-		require("conform").format({
-			lsp_fallback = true,
-			async = false,
-			timeout_ms = 1000,
-		})
-	end, "Format File or Range(v)")
+  map({ "n", "v" }, "<leader>cf", function()
+    require("conform").format({
+      lsp_fallback = true,
+      async = false,
+      timeout_ms = 1000,
+    })
+  end, "Format File or Range(v)")
 end
 
 -------------------------------------------------------------------------------
@@ -49,10 +49,10 @@ end
 map("n", "<leader>d", "", " Diagnostics")
 map("n", "<leader>dl", vim.diagnostic.open_float, "Show line diagnostics")
 map("n", "dh", function()
-	vim.diagnostic.get_prev()
+  vim.diagnostic.get_prev()
 end, "Go to previous diagnostic")
 map("n", "dl", function()
-	vim.diagnostic.get_next()
+  vim.diagnostic.get_next()
 end, "Go to next diagnostic")
 map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
 map("n", "gK", vim.lsp.buf.hover, "Show documentation for what is under cursor")
@@ -128,13 +128,13 @@ map("n", "gK", vim.lsp.buf.hover, "Show documentation for what is under cursor")
 map("n", "<leader>l", "", " Live Server")
 --<> LazyGit 󰊢
 M.LazyGit = function()
-	map("n", "<leader>lG", ":LazyGit<CR>", "Open LazyGit")
+  map("n", "<leader>lG", ":LazyGit<CR>", "Open LazyGit")
 end
 --<> Live-Server
 M.LiveServer = function()
-	map("n", "<leader>ls", ":LiveServerStart<CR>", "󱜠 Start Server")
-	map("n", "<leader>lx", ":LiveServerStop<CR>", " Stop Server")
-	map("n", "<leader>lt", ":LiveServerToggle<CR>", " Toggle Server")
+  map("n", "<leader>ls", ":LiveServerStart<CR>", "󱜠 Start Server")
+  map("n", "<leader>lx", ":LiveServerStop<CR>", " Stop Server")
+  map("n", "<leader>lt", ":LiveServerToggle<CR>", " Toggle Server")
 end
 
 --<> LSP
@@ -147,16 +147,16 @@ map("n", "<leader>m", "", " Mini")
 
 --<> Markdown-Preview
 M.mdPreview = function()
-	map("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", "Markdown Preview")
+  map("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", "Markdown Preview")
 end
 --<>Mini.Files
 M.MiniFiles = function()
-	map("n", "<leader>mf", function()
-		require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-	end, "Open mini.files (Directory of Current File)")
-	map("n", "<leader>mF", function()
-		require("mini.files").open(vim.uv.cwd(), true)
-	end, "Open mini.files (cwd)")
+  map("n", "<leader>mf", function()
+    require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+  end, "Open mini.files (Directory of Current File)")
+  map("n", "<leader>mF", function()
+    require("mini.files").open(vim.uv.cwd(), true)
+  end, "Open mini.files (cwd)")
 end
 
 --<>MiniSessions
@@ -190,15 +190,15 @@ end
 map("n", "<leader>o", "", " Others")
 ---|> source config
 map("n", "<leader>or", function()
-	vim.cmd.source("%")
-	print(" 󰑓 Config Reloaded ")
+  vim.cmd.source("%")
+  print(" 󰑓 Config Reloaded ")
 end, "󰑓 Config") -- reload neovim config
 map("n", "<leader>oL", ":Lazy<CR>", "󰂠 Lazy")
 map(
-	"n",
-	"<leader>oC",
-	":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})<CR>",
-	"Nvim Configs Directory"
+  "n",
+  "<leader>oC",
+  ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})<CR>",
+  "Nvim Configs Directory"
 )
 map("n", "<leader>oh", ":nohl<CR>", "󰉥 Clear Highlights")
 map("n", "<leader>ow", ":%s/<C-r><C-w>/", "Replace cursor Word")
@@ -249,6 +249,85 @@ map("n", "<leader>Se", ":split=<CR>", "󰇽 Equal Split")
 map("n", "<leader>Sx", ":close<CR>", "󰱝 Close Split")
 -- map("n", "<leader>st", ":lua Snacks.terminal.toggle()<CR>", "Snacks Terminal")
 
+---|>Snacks
+M.snacks = function()
+  map("n", "<leader>s", "", " Snacks")
+  map("n", "<leader>sb", "", " Snack.Buffers")
+  map("n", "<leader>sbL", function()
+    Snacks.picker.buffers()
+  end, " Buffers")
+  map("n", "<leader>sbc",
+    function()
+      require("snacks").bufdelete()
+    end, " Close Buffer")
+  map("n", "<leader>sbr",
+    function()
+      require("snacks").rename.rename_file()
+    end, " Rename File")
+  map("n", "<leader>se",
+    function()
+      Snacks.explorer()
+    end, " Explorer")
+  map("n", "<leader>sg", "", " Snacks.Git")
+  map("n", "<leader>sgb",
+    function()
+      require("snacks").gitbrowse()
+    end, " Git Browse")
+  map("n", "<leader>sgB",
+    function()
+      require("snacks").git.blame_line()
+    end, " Git Blame Line")
+  map("n", "<leader>sgh",
+    function()
+      require("snacks").lazygit.log_file()
+    end, " Lazygit Current File History")
+  map("n", "<leader>sgL",
+    function()
+      require("snacks").lazygit()
+    end, " Lazygit")
+  map("n", "<leader>sgl",
+    function()
+      require("snacks").lazygit.log()
+    end, "Lazygit Log (cwd)")
+  map("n", "<c-/>",
+    function()
+      require("snacks").terminal()
+    end, " Toggle Terminal")
+  map("n", "<c-_>",
+    function()
+      require("snacks").terminal()
+    end, "which_key_ignore")
+  map({ "n", "t" }, "]]",
+    function()
+      require("snacks").words.jump(vim.v.count1)
+    end, " Next Reference")
+  map({ "n", "t" }, "[[", function()
+    require("snacks").words.jump(-vim.v.count1)
+  end, " Prev Reference")
+  map("n", "<leader>sG", "", " Snacks.Grep")
+  map({ "n", "t" }, "<leader>sGf",
+    function()
+      Snacks.picker.smart()
+    end, " Grep Files")
+  map("n", "<leader>sGs",
+    function()
+      Snacks.picker.grep()
+    end, " Grep Strings")
+  map("n", "<leader>sn", "", " Snacks.Notifications")
+  map("n", "<leader>snh",
+    function()
+      require("snacks").notifier.show_history()
+    end, " Notification History")
+  map("n", "<leader>snc",
+    function()
+      require("snacks").notifier.hide()
+    end, " Clear Notifications")
+  map("n", "<leader>sc",
+    function()
+      require("snacks").picker.colorschemes()
+    end, " Snacks Colorscheme Picker")
+end
+
 ---|>Sort selected
 map("v", "<leader>sS", ":sort<CR>", " Sort Selected")
 
@@ -265,53 +344,53 @@ map("v", "<leader>sS", ":sort<CR>", " Sort Selected")
 map("n", "<leader>t", "", " Telescope")
 ---|> telescope
 M.telescope = function()
-	map("n", "<leader>tb", function()
-		require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
-			sort_mru = true,
-			sort_lastused = true,
-			initial_mode = "normal",
-			layout_config = {
-				height = 0.5,
-				width = 0.5,
-				preview_width = 0.5,
-			},
-		}))
-	end, "Telescope Buffers")
-	map("n", "<leader>db", ":Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics")
-	-- map("n", "<leader>te", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "󰈞 Files")
-	map("n", "<leader>tf", function()
-		require("telescope.builtin").find_files()
-	end, " Files in CWD")
-	map("n", "<leader>tg", function()
-		require("telescope.builtin").git_files()
-	end, " Files in Git")
-	map("n", "<leader>tr", function()
-		require("telescope.builtin").oldfiles()
-	end, "󱋢 Recent Files")
-	map("n", "<leader>ts", function()
-		require("telescope.builtin").live_grep()
-	end, " Grep in CWD")
-	map("n", "<leader>tc", function()
-		require("telescope.builtin").grep_string()
-	end, "󱄧 Grep String in CWD")
-	map("n", "<leader>t/", function()
-		require("telescope.builtin").current_buffer_fuzzy_find()
-	end, "Find in here")
-	map("n", "<leader>th", function()
-		require("telescope.builtin").help_tags()
-	end, " Help")
-	map("n", "gR", function()
-		require("telescope.builtin").lsp_references()
-	end, "Show LSP references")
-	map("n", "gd", function()
-		require("telescope.builtin").lsp_definitions()
-	end, "Show LSP definitions")
-	map("n", "gi", function()
-		require("telescope.builtin").lsp_implementations()
-	end, "Show LSP implementations")
-	map("n", "gt", function()
-		require("telescope.builtin").lsp_type_definitions()
-	end, "Show LSP type definitions")
+  map("n", "<leader>tb", function()
+    require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
+      sort_mru = true,
+      sort_lastused = true,
+      initial_mode = "normal",
+      layout_config = {
+        height = 0.5,
+        width = 0.5,
+        preview_width = 0.5,
+      },
+    }))
+  end, "Telescope Buffers")
+  map("n", "<leader>db", ":Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics")
+  -- map("n", "<leader>te", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "󰈞 Files")
+  map("n", "<leader>tf", function()
+    require("telescope.builtin").find_files()
+  end, " Files in CWD")
+  map("n", "<leader>tg", function()
+    require("telescope.builtin").git_files()
+  end, " Files in Git")
+  map("n", "<leader>tr", function()
+    require("telescope.builtin").oldfiles()
+  end, "󱋢 Recent Files")
+  map("n", "<leader>ts", function()
+    require("telescope.builtin").live_grep()
+  end, " Grep in CWD")
+  map("n", "<leader>tc", function()
+    require("telescope.builtin").grep_string()
+  end, "󱄧 Grep String in CWD")
+  map("n", "<leader>t/", function()
+    require("telescope.builtin").current_buffer_fuzzy_find()
+  end, "Find in here")
+  map("n", "<leader>th", function()
+    require("telescope.builtin").help_tags()
+  end, " Help")
+  map("n", "gR", function()
+    require("telescope.builtin").lsp_references()
+  end, "Show LSP references")
+  map("n", "gd", function()
+    require("telescope.builtin").lsp_definitions()
+  end, "Show LSP definitions")
+  map("n", "gi", function()
+    require("telescope.builtin").lsp_implementations()
+  end, "Show LSP implementations")
+  map("n", "gt", function()
+    require("telescope.builtin").lsp_type_definitions()
+  end, "Show LSP type definitions")
 end
 
 map("n", "<leader>T", "", "󰓩 Tabs")
@@ -331,13 +410,13 @@ map("n", "<leader>TN", ":tabnew %<CR>", " Buffer in New Tab")
 
 --<> trouble
 M.trouble = function()
-	map("n", "<leader>t", ":Trouble<CR>", "Troubles Diagnosis")
-	map("n", "<leader>tx", ":TroubleToggle<CR>", "Trouble list")
-	map("n", "<leader>tw", ":TroubleToggle workspace_diagnostics<CR>", "Workspace Diagnostics")
-	map("n", "<leader>td", ":TroubleToggle document_diagnostics<CR>", "Document Diagnostics")
-	map("n", "<leader>tq", ":TroubleToggle quickfix<CR>", "Quickfix List")
-	map("n", "<leader>tl", ":TroubleToggle loclist<CR>", "Location List")
-	-- map("n", "<leader>tt", ":TodoTrouble<CR>", "ToDo in Trouble")
+  map("n", "<leader>t", ":Trouble<CR>", "Troubles Diagnosis")
+  map("n", "<leader>tx", ":TroubleToggle<CR>", "Trouble list")
+  map("n", "<leader>tw", ":TroubleToggle workspace_diagnostics<CR>", "Workspace Diagnostics")
+  map("n", "<leader>td", ":TroubleToggle document_diagnostics<CR>", "Document Diagnostics")
+  map("n", "<leader>tq", ":TroubleToggle quickfix<CR>", "Quickfix List")
+  map("n", "<leader>tl", ":TroubleToggle loclist<CR>", "Location List")
+  -- map("n", "<leader>tt", ":TodoTrouble<CR>", "ToDo in Trouble")
 end
 
 -------------------------------------------------------------------------------

@@ -12,9 +12,6 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
-    local transform_mod = require("telescope.actions.mt").transform_mod
-    -- local trouble = require("trouble")
-    -- local trouble_telescope = require("trouble.sources.telescope")
     local function find_command()
       if 1 == vim.fn.executable("rg") then
         return { "rg", "--files", "--color", "never", "-g", "!.git" }
@@ -28,13 +25,6 @@ return {
         return { "where", "/r", ".", "*" }
       end
     end
-
-    -- or create your custom action
-    -- local custom_actions = transform_mod({
-    -- 	open_trouble_qflist = function()
-    -- 		trouble.toggle("quickfix")
-    -- 	end,
-    -- })
 
     telescope.setup({
       defaults = {
@@ -114,8 +104,8 @@ return {
       extensions_list = { "themes", "terms" },
       extensions = {},
     })
-    -- telescope.load_extension("fzf")
-    -- telescope.load_extension("fzy")
-    -- telescope.load_extension("frecency")
+    telescope.load_extension("fzf")
+    telescope.load_extension("fzy")
+    telescope.load_extension("frecency")
   end,
 }

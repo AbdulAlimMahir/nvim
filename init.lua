@@ -7,3 +7,4 @@ require("Projects.terminal")
 require("Plugins")
 -----------------------
 require("Configs.lazy")
+vim.cmd.colorscheme("kanagawa-paper-ink")
