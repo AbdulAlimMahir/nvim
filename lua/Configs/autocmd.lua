@@ -4,41 +4,6 @@ local function augroup(name)
 end
 
 -------------------------------
----|>NvChad_event "User FilePost"
--- user event that loads after UIEnter + only if file buf is there
-autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
-	group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
-	callback = function(args)
-		local file = vim.api.nvim_buf_get_name(args.buf)
-		local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
-
-		if not vim.g.ui_entered and args.event == "UIEnter" then
-			vim.g.ui_entered = true
-		end
-
-		if file ~= "" and buftype ~= "nofile" and vim.g.ui_entered then
-			vim.api.nvim_exec_autocmds("User", { pattern = "FilePost", modeline = false })
-			vim.api.nvim_del_augroup_by_name("NvFilePost")
-
-			vim.schedule(function()
-				vim.api.nvim_exec_autocmds("FileType", {})
-
-				if vim.g.editorconfig then
-					require("editorconfig").config(args.buf)
-				end
-			end)
-		end
-	end,
-})
-
----|>LazyVim_event "User LazyFile"
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufWritePre" }, {
-	group = vim.api.nvim_create_augroup("LazyFile", { clear = true }),
-	callback = function()
-		vim.api.nvim_exec_autocmds("User", { pattern = "LazyFile" })
-	end,
-})
-
 ---|>Filetype specific event for LSP,Linter,TS,DAP "MasonLspFiletype"
 autocmd({ "FileType" }, {
 	group = vim.api.nvim_create_augroup("MasonLspFiletype", { clear = true }),
@@ -76,12 +41,12 @@ autocmd("User", {
 })
 
 ---|>Yank_Highlight
--- autocmd("TextYankPost", {
---   group = augroup("highlight_yank"),
---   callback = function()
---     (vim.hl or vim.highlight).on_yank()
---   end,
--- })
+autocmd("TextYankPost", {
+	group = augroup("highlight_yank"),
+	callback = function()
+		(vim.hl or vim.highlight).on_yank()
+	end,
+})
 
 ---|> Check if we need to reload the file when it changed
 autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
@@ -192,7 +157,7 @@ autocmd("TermOpen", {
 	callback = function()
 		vim.opt_local.number = false
 		vim.opt_local.relativenumber = false
-		vim.opt_local.signcolumn = "no"  -- Hide sign column
+		vim.opt_local.signcolumn = "no" -- Hide sign column
 		vim.opt_local.cursorline = false -- Disable cursorline
 	end,
 })

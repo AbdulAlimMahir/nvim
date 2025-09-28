@@ -8,7 +8,6 @@ return {
 		backdrop = false,
 		row = 1,
 		col = 1,
-		-- width/height are automatically set by the image size unless specified below
 	},
 	notification = {
 		border = "rounded",
@@ -35,5 +34,4 @@ return {
 	title_pos = "center",
 	ft = "markdown",
 	bo = { filetype = "snacks_notif_history", modifiable = false },
-	-- wo = { winhighl },
 }
