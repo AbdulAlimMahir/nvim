@@ -28,6 +28,27 @@ return {
 		},
 	},
 	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "LspAttach",
+		priority = 1000,
+		opts = {
+			-- "modern", "classic", "minimal", "powerline", "ghost", "simple", "nonerdfont", "amongus"
+			preset = "amongus",
+			transparent_bg = false,
+			options = {
+				show_source = {
+					enabled = true,
+					if_many = true,
+				},
+				throttle = 100,
+				multilines = {
+					enabled = true,
+					trim_whitespaces = true,
+				},
+			},
+		},
+	},
+	{
 		"folke/trouble.nvim",
 		enabled = true,
 		cmd = "Trouble",
